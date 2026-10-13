@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INTERIOR = ROOT / "interior"
 MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
-VERSION = "20261013-nutrition-1"
+VERSION = "20261013-clean-dishes-2"
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
 BREAKFASTS = CATEGORIES["breakfasts"]
@@ -52,7 +52,7 @@ def card(entry, page, dish=False):
                 escape(entry["name"])+hit+'</h3></div>'+prices(entry)+'</div>')
     identifier = ' id="'+escape(entry["id"], quote=True)+'"' if dish else ''
     if dish:
-        target = url(MENU / "breakfasts" / entry["id"], page, True)
+        target = url(MENU / "breakfasts" / entry["id"], page, True)+"?v="+VERSION
         contents = ('<a class="dish-card-link" href="'+target+'" aria-label="'+
                     escape('Подробнее: '+entry["name"], quote=True)+'">'+contents+'</a>')
     return '<article'+identifier+' class="menu-item dessert-card">'+contents+'</article>'
@@ -124,7 +124,7 @@ landing_content = (
     'M12 62v26M12 75h14M84 62v26M70 75h14" stroke="currentColor" stroke-width="1.5"'
     ' stroke-linecap="round"/></svg><span>Место для фото интерьера</span></div>'
     '<nav class="interior-actions" aria-label="Меню и отзыв о кофейне">'
-    '<a class="interior-action" href="menu/">Посмотреть меню</a>'
+    '<a class="interior-action" href="menu/?v='+VERSION+'">Посмотреть меню</a>'
     '<a class="interior-action" href="https://2gis.ru/makhachkala/firm/70000001098754589/tab/reviews"'
     ' target="_blank" rel="noopener noreferrer"'
     ' aria-label="Отзыв о ZÁDU в 2ГИС, откроется новая вкладка">Отзыв</a></nav></div></main>')
@@ -134,8 +134,8 @@ document(landing_page, "ZÁDU — кофейня и меню", "Кондитер
 menu_page = MENU / "index.html"
 group_content = (
     '<main class="menu-layout"><h1>Меню</h1><nav class="menu-group-list" aria-label="Основные разделы меню">'
-    '<a class="menu-group-card" href="breakfasts/">Завтраки</a>'
-    '<a class="menu-group-card" href="bar/">Бар</a></nav></main>')
+    '<a class="menu-group-card" href="breakfasts/?v='+VERSION+'">Завтраки</a>'
+    '<a class="menu-group-card" href="bar/?v='+VERSION+'">Бар</a></nav></main>')
 document(menu_page, "Меню — ZÁDU", "Завтраки и бар кофейни ZÁDU.", group_content, "menu-page",
          (url(INTERIOR, menu_page, True), "← На главную"))
 
@@ -167,7 +167,7 @@ for entry in BREAKFASTS["items"]:
     details = (
         '<main class="dish-layout"><div class="dish-image">'+image(entry, dish_page, "dish-photo")+
         '</div><div class="dish-copy"><h1>'+escape(entry["name"])+'</h1>'
-        '<section class="dish-section"><h2>Описание</h2><p>'+description+'</p></section>'
+        '<section class="dish-section"><p>'+description+'</p></section>'
         '<section class="dish-section"><h2>КБЖУ</h2>'+nutrition(entry)+'</section>'+
         price_section+
         '<a class="return-to-breakfasts" href="'+return_to_card+'">← Все завтраки</a></div></main>')
