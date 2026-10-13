@@ -16,14 +16,11 @@ a:focus-visible{outline:2px solid var(--ink);outline-offset:5px}
 .back-home{display:flex;align-items:center;min-height:44px;font-size:14px;border-bottom:1px solid var(--line)}
 .landing-main{width:min(960px,calc(100% - 64px));margin:0 auto}
 .interior-link{display:block}
-.interior-frame{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;min-height:340px;height:clamp(340px,57svh,560px);padding:32px 32px 116px;background:#e9e0d2;color:var(--ink);border:1px solid var(--line);border-radius:4px;text-align:center}
-.interior-frame::after{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(42,36,28,.04) 0%,rgba(42,36,28,.04) 52%,rgba(42,36,28,.72) 84%,rgba(42,36,28,.76) 100%)}
+.interior-frame{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;min-height:340px;height:clamp(340px,57svh,560px);padding:32px;background:#e9e0d2;color:var(--ink);border:1px solid var(--line);border-radius:4px;text-align:center}
 .interior-photo{position:absolute;z-index:0;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 .interior-frame>.interior-placeholder-icon,.interior-frame>span{position:relative;z-index:2}
 .interior-placeholder-icon{width:94px;height:94px;opacity:.5}
 .interior-frame>span{font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;line-height:1.5}
-.interior-caption{position:absolute;z-index:2;left:32px;right:32px;bottom:27px;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:44px;padding:0;color:var(--milk);font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:1.2;text-align:left}
-.interior-menu-arrow{flex:none;font:32px/1 Arial,Helvetica,sans-serif}
 .page-footer.landing-footer{width:min(960px,calc(100% - 64px));padding-top:18px;text-align:left}
 .page-footer.landing-footer .location-link{display:flex;width:100%;justify-content:space-between;gap:20px;min-height:44px;padding:0;border:0;font-size:20px;line-height:1.4}
 .page-footer.landing-footer .location-link>span:last-child{font-size:28px}
@@ -32,6 +29,18 @@ a:focus-visible{outline:2px solid var(--ink);outline-offset:5px}
 .page-footer p{margin:0 0 9px;color:var(--muted);font-size:11px}
 .page-footer a{display:inline-flex;align-items:center;gap:12px;min-height:44px;font-size:12px;border-bottom:1px solid var(--line)}
 .menu-layout{display:grid;grid-template-columns:255px minmax(0,1fr);gap:56px;align-items:start;width:min(1100px,calc(100% - 64px));margin:18px auto 0}
+.menu-layout[data-menu-view="home"],.menu-layout[data-menu-view="bar"],.menu-layout[data-menu-view="food"]{grid-template-columns:minmax(0,1fr)}
+.menu-groups{grid-column:1/-1;scroll-margin-top:18px}
+.menu-groups h1{margin:0 0 24px;font:400 44px/1.1 Georgia,'Times New Roman',serif;letter-spacing:-.04em;outline:0}
+.menu-group-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.menu-group-card{display:flex;align-items:center;justify-content:center;min-height:112px;padding:24px 16px;background:var(--paper);border:1px solid var(--line);border-radius:9px;text-align:center;font:400 32px/1.2 Georgia,'Times New Roman',serif;transition:background .2s,border-color .2s}
+.menu-group-card:hover,.menu-group-card.active{background:#eee8dd;border-color:rgba(100,84,63,.4)}
+.bar-choices{position:sticky;top:24px;min-width:0;scroll-margin-top:18px}
+.bar-choices h2{margin:0 0 16px;font-size:32px;line-height:1.2;outline:0}
+.bar-choices .category-list{position:static}
+.menu-layout[data-menu-view="bar"] .bar-choices{position:static}
+.menu-layout[data-menu-view="bar"] .category-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 28px;max-width:680px}
+.menu-layout[data-menu-view="food"] .menu-content{max-width:none}
 .category-list{position:sticky;top:24px;display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:0;margin:0;scroll-margin-top:18px}
 .category-link{display:flex;align-items:center;min-height:44px;padding:7px 0;font-size:20px;line-height:1.25;color:var(--muted);transition:color .2s}
 .category-link:hover,.category-link.active{color:var(--ink)}
@@ -62,16 +71,21 @@ h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400}
   .brand-logo{width:145px}
   .back-home{font-size:12px}
   .landing-main,.page-footer{width:calc(100% - 36px)}
-  .interior-frame{min-height:300px;height:clamp(300px,55svh,480px);padding:24px 24px 104px;border-radius:4px;gap:16px}
+  .interior-frame{min-height:300px;height:clamp(300px,55svh,480px);padding:24px;border-radius:4px;gap:16px}
   .interior-placeholder-icon{width:76px;height:76px}
   .interior-frame>span{font-size:15px;max-width:260px}
-  .interior-caption{left:24px;right:24px;bottom:24px;font-size:24px;padding:0}
-  .interior-menu-arrow{font-size:28px}
   .page-footer.landing-footer{width:calc(100% - 36px);padding-top:16px}
   .page-footer.landing-footer .location-link{font-size:17px;gap:18px}
   .landing-footer{padding-top:20px}
   .page-footer p{font-size:10px;line-height:1.5}
   .menu-layout{display:block;width:calc(100% - 36px);margin-top:23px}
+  .menu-groups{margin-bottom:32px}
+  .menu-groups h1{font-size:40px;margin-bottom:22px}
+  .menu-group-list{gap:14px}
+  .menu-group-card{min-height:96px;font-size:25px;padding:18px 10px}
+  .bar-choices{position:static}
+  .bar-choices h2{font-size:30px}
+  .menu-layout[data-menu-view="bar"] .category-list{gap:4px 16px}
   .category-list{position:static;margin-bottom:41px;gap:0}
   .category-link{font-size:21px;min-height:44px;padding:8px 0}
   .menu-content{max-width:none}
@@ -87,7 +101,7 @@ h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400}
   .empty-menu{padding:22px;font-size:14px}
   .menu-category{margin-bottom:36px}
 }
-@media(max-width:350px){.brand-logo{width:134px}.back-home{font-size:11px}.interior-caption{font-size:22px;left:20px;right:20px}.category-link{font-size:20px}.item-title h3{font-size:26px}.item-price{font-size:21px}.item-copy{padding:17px 15px 19px}.section-header h2{font-size:35px}}
+@media(max-width:350px){.brand-logo{width:134px}.back-home{font-size:11px}.menu-group-card{font-size:22px}.menu-layout[data-menu-view="bar"] .category-link{font-size:18px}.category-link{font-size:20px}.item-title h3{font-size:26px}.item-price{font-size:21px}.item-copy{padding:17px 15px 19px}.section-header h2{font-size:35px}}
 @supports not (overflow:clip){html,body{overflow-x:hidden}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
