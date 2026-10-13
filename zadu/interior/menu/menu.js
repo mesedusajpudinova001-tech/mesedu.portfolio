@@ -6,7 +6,7 @@
   const links = [...document.querySelectorAll('[data-category]')];
   const sections = [...document.querySelectorAll('.menu-category')];
   const sectionById = new Map(sections.map(section => [section.id, section]));
-  const barCategoryIds = new Set(links.map(link => link.dataset.category));
+  const oldFoodHashes = new Set(['breakfasts', 'hot-food', 'bowls']);
   const barChoices = document.querySelector('.bar-choices');
   const content = document.querySelector('.menu-content');
   const menuHeading = document.querySelector('#heading-menu');
@@ -14,11 +14,10 @@
   const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function route(hash) {
-    const id = ({'hot-food': 'breakfasts', bowls: 'breakfasts', sections: 'bar'})[hash] || hash;
+    const id = hash === 'sections' ? 'bar' : hash;
     if (id === 'bar') return {view: 'bar', group: 'bar', category: null};
     if (sectionById.has(id)) {
-      const group = barCategoryIds.has(id) ? 'bar' : 'food';
-      return {view: group === 'bar' ? 'bar-category' : 'food', group, category: id};
+      return {view: 'bar-category', group: 'bar', category: id};
     }
     return {view: 'home', group: null, category: null};
   }
@@ -30,6 +29,10 @@
   }
 
   function showView(hash) {
+    if (oldFoodHashes.has(hash)) {
+      window.location.replace('breakfasts/');
+      return null;
+    }
     const state = route(hash);
     layout.dataset.menuView = state.view;
     barChoices.hidden = state.group !== 'bar';
@@ -46,9 +49,11 @@
   document.querySelectorAll('[data-menu-group], [data-category], [data-menu-back]').forEach(link => {
     link.addEventListener('click', event => {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (!link.getAttribute('href')?.startsWith('#')) return;
       event.preventDefault();
       if (window.location.hash !== link.hash) window.history.pushState(null, '', link.hash);
       const heading = showView(link.hash.slice(1));
+      if (!heading) return;
       heading.focus({preventScroll: true});
       heading.scrollIntoView({behavior: motionPreference.matches ? 'auto' : 'smooth', block: 'start'});
     });

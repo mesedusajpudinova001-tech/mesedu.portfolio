@@ -50,6 +50,8 @@ a:focus-visible{outline:2px solid var(--ink);outline-offset:5px}
 .category-link:hover,.category-link.active{color:var(--ink)}
 .category-link.active{text-decoration:underline;text-underline-offset:7px;text-decoration-thickness:1px;text-decoration-color:rgba(100,84,63,.5)}
 .menu-content{min-width:0}
+.breakfast-layout{width:min(1100px,calc(100% - 64px));margin:18px auto 0}
+.breakfast-layout h1{margin:0 0 25px;font:400 44px/1.1 Georgia,'Times New Roman',serif;letter-spacing:-.04em}
 .menu-category{margin-bottom:48px;scroll-margin-top:18px}
 .section-header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:9px 20px;margin:0 0 25px}
 h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400}
@@ -96,6 +98,8 @@ h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400}
   .category-list{position:static;margin-bottom:41px;gap:0}
   .category-link{font-size:21px;min-height:44px;padding:8px 0}
   .menu-content{max-width:none}
+  .breakfast-layout{width:calc(100% - 36px);margin-top:23px}
+  .breakfast-layout h1{font-size:40px;margin-bottom:22px}
   .section-header{margin-bottom:22px;gap:7px 16px}
   .section-header h2{font-size:40px}
   .item-group-title{font-size:21px;margin-bottom:18px}
@@ -108,7 +112,7 @@ h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400}
   .empty-menu{padding:22px;font-size:14px}
   .menu-category{margin-bottom:36px}
 }
-@media(max-width:350px){.brand-logo{width:134px}.back-home{font-size:11px}.menu-group-card{font-size:22px}.menu-layout[data-menu-view="bar"] .category-link{font-size:18px}.category-link{font-size:20px}.item-title h3{font-size:26px}.item-price{font-size:21px}.item-copy{padding:17px 15px 19px}.section-header h2{font-size:35px}}
+@media(max-width:350px){.brand-logo{width:134px}.back-home{font-size:11px}.menu-group-card{font-size:22px}.menu-layout[data-menu-view="bar"] .category-link{font-size:18px}.category-link{font-size:20px}.item-title h3{font-size:26px}.item-price{font-size:21px}.item-copy{padding:17px 15px 19px}.section-header h2,.breakfast-layout h1{font-size:35px}}
 @supports not (overflow:clip){html,body{overflow-x:hidden}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
