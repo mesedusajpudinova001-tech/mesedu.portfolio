@@ -1126,8 +1126,8 @@
     }
   ],
   "branding": {
-    "logo": "assets/logo.svg",
-    "source_note": "Original logo screenshot, cropped without redrawing. Replace with original transparent artwork when available."
+    "logo": "assets/brand-mark.svg",
+    "source_note": "Original cafe emblem isolated from the existing logo by its SVG viewport, without redrawing. The original full logo is retained in assets/logo.svg; the name is displayed separately as text."
   },
   "interior": {
     "photo": null,

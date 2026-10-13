@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INTERIOR = ROOT / "interior"
 MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
-VERSION = "20261013-logo-return-1"
+VERSION = "20261013-emblem-only-1"
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
 BREAKFASTS = CATEGORIES["breakfasts"]
@@ -114,7 +114,7 @@ def document(page, title, description, content, body_class, back=None):
         '</head>\n<body class="'+body_class+'">\n'
         '  <header class="site-header '+header_class+'"><a class="brand-logo" href="'+
         nav_url(url(INTERIOR, page, True))+'" aria-label="ZÁDU — главная"><img data-brand-logo src="'+logo+
-        '" width="207" height="168" alt="Логотип кофейни ZÁDU" decoding="async"><span class="brand-name">ZÁDU</span></a>'+
+        '" width="64" height="60" alt="Фирменный знак кофейни ZÁDU" decoding="async"><span class="brand-name">ZÁDU</span></a>'+
         back_link+'</header>\n  '+content+'\n  '+footer(landing)+
         '\n  <script src="'+url(INTERIOR / "site.js", page)+'?v='+VERSION+'"></script>\n  '+
         compat+'\n</body>\n</html>\n')

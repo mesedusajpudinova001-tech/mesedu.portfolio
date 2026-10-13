@@ -10,7 +10,7 @@ a:focus-visible{outline:2px solid var(--olive);outline-offset:5px}
 .visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
 .site-header{position:relative;display:flex;align-items:center;justify-content:center;width:min(1080px,calc(100% - 64px));margin:0 auto;padding:22px 0 16px}
 .brand-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;width:175px;min-height:142px;flex:none}
-.brand-logo img{display:block;width:135px;max-width:100%;height:auto;aspect-ratio:207/168;object-fit:contain}
+.brand-logo img{display:block;width:70px;max-width:100%;height:auto;aspect-ratio:64/60;object-fit:contain}
 .brand-name{display:block;font-family:ZaduBrand,Arial,Helvetica,sans-serif;font-size:46px;font-weight:700;font-synthesis:none;line-height:1.2;letter-spacing:-.025em;color:#39462d;text-align:center}
 .back-home{position:absolute;left:0;top:32px;display:flex;align-items:center;min-height:44px;max-width:160px;font-size:14px;color:var(--olive)}
 .landing-main{width:min(1100px,calc(100% - 48px));margin:0 auto}
@@ -82,7 +82,7 @@ h1{margin:0 0 28px;font-size:46px;line-height:1.15;letter-spacing:-.025em;overfl
 @media(max-width:740px){
  .site-header{width:calc(100% - 36px);padding:18px 0 14px}
  .brand-logo{width:145px;min-height:118px;gap:8px}
- .brand-logo img{width:115px}
+ .brand-logo img{width:62px}
  .brand-name{font-size:36px}
  .back-home{top:22px;max-width:calc((100% - 145px)/2 - 8px);font-size:12px;line-height:1.4}
  .landing-main{width:calc(100% - 28px)}
