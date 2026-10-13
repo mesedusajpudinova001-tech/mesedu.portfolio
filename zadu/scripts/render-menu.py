@@ -136,6 +136,18 @@ def nutrition(entry):
             for option in options)
     return nutrition_values(entry.get("nutrition"))
 
+# Keep the already distributed QR address. A fresh landing URL avoids a cached
+# homepage sending guests into an earlier revision of the menu.
+(ROOT / "index.html").write_text(
+    '<!doctype html>\n<html lang="ru"><head><meta charset="utf-8">'
+    '<meta name="viewport" content="width=device-width,initial-scale=1">'
+    '<meta name="theme-color" content="#ffffff"><title>ZÁDU — меню</title>'
+    '<script>window.location.replace("interior/?visit="+Date.now());</script>'
+    '<noscript><meta http-equiv="refresh" content="0;url=interior/?v='+VERSION+'"></noscript>'
+    '</head><body style="margin:0;padding:40px;background:#fff;color:#4f523d;font-family:Arial,sans-serif">'
+    '<a href="interior/?v='+VERSION+'" style="color:inherit">Открыть меню ZÁDU</a>'
+    '</body></html>\n')
+
 landing_page = INTERIOR / "index.html"
 landing_content = (
     '<main class="landing-main"><h1 class="visually-hidden">Кондитерская и кофейня ZÁDU</h1>'
