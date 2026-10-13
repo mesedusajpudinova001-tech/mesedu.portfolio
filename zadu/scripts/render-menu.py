@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INTERIOR = ROOT / "interior"
 MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
-VERSION = "20261013-dish-photos-1"
+VERSION = "20261014-original-dish-photos"
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
 BREAKFASTS = CATEGORIES["breakfasts"]
@@ -25,10 +25,22 @@ def nav_url(path):
     return target+(separator+anchor if separator else '')
 
 def image(entry, page, extra_class=""):
+    if entry.get("photo_variants"):
+        return ('<div class="dish-photo-gallery">'+''.join(
+            image({"name": entry["name"], **option}, page, extra_class)
+            for option in entry["photo_variants"])+ '</div>')
     if entry.get("photo"):
-        return ('<div class="item-photo '+extra_class+'"><img src="'+
+        # The supplied screenshots contain a centred photograph. Clip only the
+        # phone's black margins in the layout; retain the original photo pixels.
+        framing = ' original-dish-photo' if entry.get("photo_framing") == "center-591x442" else ''
+        photo = ('<div class="item-photo'+framing+' '+extra_class+'"><img src="'+
                 escape(url(ROOT / entry["photo"], page), quote=True)+'" alt="'+
-                escape(entry.get("photo_alt") or entry["name"], quote=True)+'" loading="lazy" decoding="async"></div>')
+                escape(entry.get("photo_alt") or entry["name"], quote=True)+
+                '" loading="lazy" decoding="async"></div>')
+        if entry.get("photo_caption"):
+            return ('<figure class="dish-photo-figure">'+photo+'<figcaption class="dish-photo-caption">'+
+                    escape(entry["photo_caption"])+ '</figcaption></figure>')
+        return photo
     return ('<div class="item-photo menu-photo-placeholder '+extra_class+'" aria-hidden="true">'
             '<svg viewBox="0 0 48 48" fill="none"><rect x="7" y="10" width="34" height="28" rx="4"/>'
             '<circle cx="17" cy="19" r="3"/><path d="m8 33 10-10 8 8 6-6 9 9"/></svg>'
