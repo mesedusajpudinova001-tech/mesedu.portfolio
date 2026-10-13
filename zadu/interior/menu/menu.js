@@ -1,12 +1,12 @@
 "use strict";
-// Keep bookmarks to the former hash routes working with the new full pages.
+// Former category bookmarks now land in the complete scrolling menu.
 (() => {
   const hash = window.location.hash.slice(1);
-  const drinks = new Set(["coffee", "milk-coffee", "raf", "cold-coffee", "tea",
-    "cocktails", "fresh", "shots", "lemonades"]);
-  if (["breakfasts", "hot-food", "bowls"].includes(hash)) {
-    window.location.replace("breakfasts/");
-  } else if (hash === "bar" || hash === "sections" || drinks.has(hash)) {
-    window.location.replace("bar/" + (drinks.has(hash) ? "#" + hash : ""));
-  }
+  const aliases = {"hot-food": "breakfasts", "bowls": "breakfasts", "bar": "drinks", "sections": "drinks"};
+  const target = aliases[hash];
+  if (!target) return;
+  const section = document.getElementById(target);
+  if (!section) return;
+  window.history.replaceState(null, "", "#" + target);
+  section.scrollIntoView();
 })();

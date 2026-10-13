@@ -1026,6 +1026,12 @@
           "nutrition_status": "not_provided"
         }
       ]
+    },
+    {
+      "id": "desserts",
+      "title": "Десерты",
+      "note": null,
+      "items": []
     }
   ],
   "allergy_note": "Если у вас аллергия на какой-либо продукт, сообщите нам!",
@@ -1045,8 +1051,15 @@
       ]
     },
     {
+      "id": "desserts",
+      "title": "Десерты",
+      "categories": [
+        "desserts"
+      ]
+    },
+    {
       "id": "bar",
-      "title": "Бар",
+      "title": "Напитки",
       "categories": [
         "coffee",
         "milk-coffee",

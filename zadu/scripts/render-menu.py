@@ -8,10 +8,11 @@ ROOT = Path(__file__).resolve().parents[1]
 INTERIOR = ROOT / "interior"
 MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
-VERSION = "20261013-clean-dishes-3"
+VERSION = "20261013-white-menu-1"
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
 BREAKFASTS = CATEGORIES["breakfasts"]
+DESSERTS = CATEGORIES["desserts"]
 
 def url(target, page, directory=False):
     path = os.path.relpath(target, page.parent).replace(os.sep, "/")
@@ -61,7 +62,24 @@ def card(entry, page, dish=False):
         target = url(MENU / "breakfasts" / entry["id"], page, True)+"?v="+VERSION
         contents = ('<a class="dish-card-link" href="'+target+'" aria-label="'+
                     escape('Подробнее: '+entry["name"], quote=True)+'">'+contents+'</a>')
-    return '<article'+identifier+' class="menu-item dessert-card">'+contents+'</article>'
+    return '<article'+identifier+' class="menu-item">'+contents+'</article>'
+
+def category_section(category, page, heading_level=2, dish=False):
+    category_id = category["id"]
+    heading_id = "heading-"+category_id
+    heading = 'h'+str(heading_level)
+    note = '<p class="category-note">'+escape(category["note"])+'</p>' if category.get("note") else ''
+    items = ''.join(card(entry, page, dish) for entry in category["items"])
+    if items:
+        content = '<div class="item-grid">'+items+'</div>'
+    else:
+        content = '<p class="empty-category">Скоро добавим десерты.</p>'
+    return ('<section class="menu-category" id="'+category_id+'" aria-labelledby="'+heading_id+'">'+
+            '<'+heading+' id="'+heading_id+'">'+escape(category["title"])+'</'+heading+'>'+note+content+'</section>')
+
+def drink_sections(page, heading_level=2):
+    return ''.join(category_section(CATEGORIES[category_id], page, heading_level)
+                   for category_id in BAR["categories"])
 
 def footer(landing=False):
     allergy = '' if landing else '<p class="allergy-note">'+escape(DATA["allergy_note"])+'</p>'
@@ -76,13 +94,12 @@ def document(page, title, description, content, body_class, back=None):
     landing = body_class == "landing-page"
     header_class = "landing-header" if landing else "menu-header"
     logo = url(ROOT / DATA.get("branding", {}).get("logo", "assets/logo.svg"), page)
-    motion = '' if landing else '<script src="'+url(ROOT / "green-coffee/motion.js", page)+'"></script>'
     compat = '<script src="menu.js?v='+VERSION+'"></script>' if page == MENU / "index.html" else ''
     output = (
         '<!doctype html>\n<html lang="ru">\n<head>\n'
         '  <meta charset="utf-8">\n'
         '  <meta name="viewport" content="width=device-width, initial-scale=1">\n'
-        '  <meta name="theme-color" content="#f7f4ed">\n'
+        '  <meta name="theme-color" content="#ffffff">\n'
         '  <meta name="description" content="'+escape(description, quote=True)+'">\n'
         '  <title>'+escape(title)+'</title>\n'
         '  <link rel="icon" type="image/svg+xml" href="'+url(ROOT / "assets/favicon.svg", page)+'">\n'
@@ -93,7 +110,7 @@ def document(page, title, description, content, body_class, back=None):
         '" width="207" height="168" alt="ZÁDU, кондитерская и кофейня" decoding="async"></a>'+
         back_link+'</header>\n  '+content+'\n  '+footer(landing)+
         '\n  <script src="'+url(INTERIOR / "site.js", page)+'?v='+VERSION+'"></script>\n  '+
-        compat+motion+'\n</body>\n</html>\n')
+        compat+'\n</body>\n</html>\n')
     page.parent.mkdir(parents=True, exist_ok=True)
     page.write_text('\n'.join(line.rstrip() for line in output.splitlines())+'\n')
 
@@ -141,8 +158,13 @@ menu_page = MENU / "index.html"
 group_content = (
     '<main class="menu-layout"><h1>Меню</h1><nav class="menu-group-list" aria-label="Основные разделы меню">'
     '<a class="menu-group-card" href="breakfasts/?v='+VERSION+'">Завтраки</a>'
-    '<a class="menu-group-card" href="bar/?v='+VERSION+'">Бар</a></nav></main>')
-document(menu_page, "Меню — ZÁDU", "Завтраки и бар кофейни ZÁDU.", group_content, "menu-page",
+    '<a class="menu-group-card" href="desserts/?v='+VERSION+'">Десерты</a>'
+    '<a class="menu-group-card" href="bar/?v='+VERSION+'">Напитки</a></nav>'
+    '<p class="menu-help">Нажми на фото блюда, чтобы посмотреть описание и КБЖУ.</p>'+
+    category_section(BREAKFASTS, menu_page, dish=True)+category_section(DESSERTS, menu_page)+
+    '<section class="drinks-section" id="drinks" aria-labelledby="heading-drinks">'
+    '<h2 id="heading-drinks">Напитки</h2>'+drink_sections(menu_page, 3)+'</section></main>')
+document(menu_page, "Меню — ZÁDU", "Завтраки, десерты и напитки кофейни ZÁDU — всё меню на одной странице.", group_content, "menu-page",
          (url(INTERIOR, menu_page, True), "← На главную"))
 
 breakfast_page = MENU / "breakfasts/index.html"
@@ -151,16 +173,16 @@ breakfast_content = ('<main class="breakfast-layout" id="breakfasts"><h1>Зав�
 document(breakfast_page, "Завтраки — ZÁDU", "Завтраки ZÁDU. Выберите блюдо, чтобы посмотреть подробности.",
          breakfast_content, "menu-page breakfast-page", (url(MENU, breakfast_page, True), "← К меню"))
 
+dessert_page = MENU / "desserts/index.html"
+dessert_content = ('<main class="dessert-layout"><h1>Десерты</h1>'+
+                   ('<div class="item-grid">'+''.join(card(e, dessert_page) for e in DESSERTS["items"])+
+                    '</div>' if DESSERTS["items"] else '<p class="empty-category">Скоро добавим десерты.</p>')+'</main>')
+document(dessert_page, "Десерты — ZÁDU", "Десерты кофейни ZÁDU.", dessert_content,
+         "menu-page dessert-page", (url(MENU, dessert_page, True), "← К меню"))
+
 bar_page = MENU / "bar/index.html"
-sections = []
-for category_id in BAR["categories"]:
-    c = CATEGORIES[category_id]
-    note = '<p class="category-note">'+escape(c["note"])+'</p>' if c.get("note") else ''
-    sections.append('<section class="menu-category" id="'+category_id+'" aria-labelledby="heading-'+
-                    category_id+'"><h2 id="heading-'+category_id+'">'+escape(c["title"])+'</h2>'+note+
-                    '<div class="item-grid">'+''.join(card(e, bar_page) for e in c["items"])+'</div></section>')
-document(bar_page, "Бар — ZÁDU", "Кофе, чай, коктейли, фреши, шоты и лимонады ZÁDU.",
-         '<main class="bar-layout"><h1>Бар</h1>'+''.join(sections)+'</main>',
+document(bar_page, "Напитки — бар ZÁDU", "Кофе, чай, коктейли, фреши, шоты и лимонады ZÁDU.",
+         '<main class="bar-layout"><h1>Напитки</h1>'+drink_sections(bar_page)+'</main>',
          "menu-page bar-page", (url(MENU, bar_page, True), "← К меню"))
 
 for entry in BREAKFASTS["items"]:
