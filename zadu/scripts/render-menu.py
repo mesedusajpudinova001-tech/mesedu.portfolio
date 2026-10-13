@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INTERIOR = ROOT / "interior"
 MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
-VERSION = "20261013-balanced-brand-1"
+VERSION = "20261013-dish-photos-1"
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
 BREAKFASTS = CATEGORIES["breakfasts"]
@@ -28,7 +28,7 @@ def image(entry, page, extra_class=""):
     if entry.get("photo"):
         return ('<div class="item-photo '+extra_class+'"><img src="'+
                 escape(url(ROOT / entry["photo"], page), quote=True)+'" alt="'+
-                escape(entry["name"], quote=True)+'" loading="lazy" decoding="async"></div>')
+                escape(entry.get("photo_alt") or entry["name"], quote=True)+'" loading="lazy" decoding="async"></div>')
     return ('<div class="item-photo menu-photo-placeholder '+extra_class+'" aria-hidden="true">'
             '<svg viewBox="0 0 48 48" fill="none"><rect x="7" y="10" width="34" height="28" rx="4"/>'
             '<circle cx="17" cy="19" r="3"/><path d="m8 33 10-10 8 8 6-6 9 9"/></svg>'

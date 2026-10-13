@@ -879,7 +879,7 @@
               "price": 500
             }
           ],
-          "photo": null,
+          "photo": "assets/dishes/scramble-chicken.png",
           "ingredients": null,
           "nutrition": {
             "calories": "690–740",
@@ -888,7 +888,8 @@
             "carbohydrates": "~40–45",
             "basis": null
           },
-          "nutrition_status": "provided_by_owner"
+          "nutrition_status": "provided_by_owner",
+          "photo_alt": "Нежный скрембл с курицей и сливочным соусом"
         },
         {
           "id": "dish-2",
@@ -929,10 +930,11 @@
               "price": 350
             }
           ],
-          "photo": null,
+          "photo": "assets/dishes/shakshuka.png",
           "ingredients": null,
           "nutrition": null,
-          "nutrition_status": "not_provided"
+          "nutrition_status": "not_provided",
+          "photo_alt": "Шакшука с томатами и пряностями"
         },
         {
           "id": "dish-4",
@@ -998,7 +1000,7 @@
               "price": 550
             }
           ],
-          "photo": null,
+          "photo": "assets/dishes/bavarian-breakfast.png",
           "ingredients": null,
           "nutrition": {
             "calories": "~900–930",
@@ -1007,7 +1009,8 @@
             "carbohydrates": "~54–57",
             "basis": null
           },
-          "nutrition_status": "provided_by_owner"
+          "nutrition_status": "provided_by_owner",
+          "photo_alt": "Баварское утро"
         },
         {
           "id": "dish-6",
@@ -1029,7 +1032,7 @@
               "price": 500
             }
           ],
-          "photo": null,
+          "photo": "assets/dishes/udon-chicken.png",
           "ingredients": null,
           "nutrition": null,
           "nutrition_status": "provided_by_owner",
@@ -1056,7 +1059,8 @@
               },
               "nutrition_status": "provided_by_owner"
             }
-          ]
+          ],
+          "photo_alt": "Удон с курицей"
         },
         {
           "id": "dish-7",
