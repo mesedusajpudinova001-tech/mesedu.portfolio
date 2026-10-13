@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INTERIOR = ROOT / "interior"
 MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
-VERSION = "20261013-food-prices-1"
+VERSION = "20261013-clear-brand-1"
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
 BREAKFASTS = CATEGORIES["breakfasts"]
@@ -99,7 +99,6 @@ def document(page, title, description, content, body_class, back=None):
     back_link = '' if not back else '<a class="back-home" href="'+nav_url(back[0])+'">'+escape(back[1])+'</a>'
     landing = body_class == "landing-page"
     header_class = "landing-header" if landing else "menu-header"
-    logo = url(ROOT / DATA.get("branding", {}).get("logo", "assets/logo.svg"), page)
     compat = '<script src="menu.js?v='+VERSION+'"></script>' if page == MENU / "index.html" else ''
     output = (
         '<!doctype html>\n<html lang="ru">\n<head>\n'
@@ -109,11 +108,11 @@ def document(page, title, description, content, body_class, back=None):
         '  <meta name="description" content="'+escape(description, quote=True)+'">\n'
         '  <title>'+escape(title)+'</title>\n'
         '  <link rel="icon" type="image/svg+xml" href="'+url(ROOT / "assets/favicon.svg", page)+'">\n'
+        '  <link rel="preload" href="'+url(ROOT / "assets/fonts/montserrat-brand-700.woff", page)+'" as="font" type="font/woff" crossorigin>\n'
         '  <link rel="stylesheet" href="'+url(INTERIOR / "interior.css", page)+'?v='+VERSION+'">\n'
         '</head>\n<body class="'+body_class+'">\n'
         '  <header class="site-header '+header_class+'"><a class="brand-logo" href="'+
-        nav_url(url(INTERIOR, page, True))+'" aria-label="ZÁDU — главная"><img data-brand-logo src="'+logo+
-        '" width="207" height="168" alt="ZÁDU, кондитерская и кофейня" decoding="async"></a>'+
+        nav_url(url(INTERIOR, page, True))+'" aria-label="ZÁDU — главная"><span class="brand-name">ZÁDU</span></a>'+
         back_link+'</header>\n  '+content+'\n  '+footer(landing)+
         '\n  <script src="'+url(INTERIOR / "site.js", page)+'?v='+VERSION+'"></script>\n  '+
         compat+'\n</body>\n</html>\n')
