@@ -28,7 +28,6 @@ a:focus-visible{outline:2px solid var(--ink);outline-offset:5px}
 .interior-link>span{font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;line-height:1.5}
 .page-footer.landing-footer{width:min(960px,calc(100% - 64px));padding-top:18px;text-align:left}
 .page-footer.landing-footer .location-link{display:flex;width:100%;justify-content:space-between;gap:20px;min-height:44px;padding:0;border:0;font-size:20px;line-height:1.4}
-.page-footer.landing-footer .location-link>span:last-child{font-size:28px}
 .round-arrow{display:grid;place-items:center;flex:none;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;font-family:Arial,Helvetica,sans-serif;font-size:25px}
 .page-footer{width:min(1100px,calc(100% - 64px));margin:0 auto;padding:24px 0 max(28px,env(safe-area-inset-bottom));text-align:center}
 .page-footer p{margin:0 0 9px;color:var(--muted);font-size:11px}
@@ -131,7 +130,6 @@ h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400}
 .menu-hit{display:inline-block;vertical-align:middle;margin-left:9px;padding:4px 7px;background:#ede7dc;color:#6f614f;border-radius:4px;font:600 10px/1.1 Arial,Helvetica,sans-serif;letter-spacing:.04em}
 .page-footer .allergy-note{width:min(620px,100%);margin:0 auto 19px;padding:17px 20px;background:var(--paper);border:1px solid var(--line);border-radius:9px;color:var(--ink);font-size:14px;line-height:1.6}
 .page-footer .location-link{gap:14px;font-size:13px;line-height:1.6;text-align:left;min-height:44px;padding-bottom:5px}
-.location-link>span:last-child{flex:none}
 @media(max-width:740px){.item-grid{gap:14px}.item-text-card .item-copy{padding:19px 18px}.item-text-card .item-title h3{font-size:25px}.item-text-card .item-price{font-size:22px}.category-note{font-size:14px}.variant-row strong{font-size:22px}.page-footer .location-link{font-size:12px}.page-footer .allergy-note{font-size:13px;padding:16px 18px}}
 @media(max-width:350px){.item-text-card .item-copy{padding:18px 15px}.item-text-card .item-title h3{font-size:23px}.item-text-card .item-price{font-size:20px}.variant-row{gap:12px;font-size:13px}.variant-row strong{font-size:20px}}
 

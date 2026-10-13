@@ -8,7 +8,7 @@ data=json.loads((p/'menu-data.json').read_text())
 s=(p/'index.html').read_text()
 prefix=s[:s.index('  <main')]
 prefix=re.sub(r'<meta name="description" content="[^"]*">','<meta name="description" content="Меню ZÁDU: завтраки, горячие блюда, боулы, кофе, чай, коктейли, фреши и лимонады.">',prefix)
-asset_version='20261013-actions'
+asset_version='20261013-address'
 prefix=re.sub(r'href="\.\./interior\.css(?:\?[^\"]*)?"','href="../interior.css?v='+asset_version+'"',prefix)
 footer=re.search(r'  <footer class="page-footer menu-footer">.*?</footer>',s,re.S).group(0)
 details={}
