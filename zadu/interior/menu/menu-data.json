@@ -872,8 +872,13 @@
           "name_status": "provided",
           "hit": false,
           "description": "Нежный скрембл с сочной курицей под бархатным сливочным соусом, дополненный свежим хрустящим салатом.",
-          "price_status": "not_provided",
-          "variants": [],
+          "price_status": "provided_by_owner",
+          "variants": [
+            {
+              "volume": null,
+              "price": 500
+            }
+          ],
           "photo": null,
           "ingredients": null,
           "nutrition": {
@@ -892,8 +897,13 @@
           "name_status": "provided",
           "hit": false,
           "description": "Нежные румяные сырники с варёной сгущёнкой, взбитой со сливками, и свежими сезонными ягодами.",
-          "price_status": "not_provided",
-          "variants": [],
+          "price_status": "provided_by_owner",
+          "variants": [
+            {
+              "volume": null,
+              "price": 500
+            }
+          ],
           "photo": null,
           "ingredients": null,
           "nutrition": {
@@ -912,8 +922,13 @@
           "name_status": "provided",
           "hit": false,
           "description": "Ароматная шакшука с яйцами, приготовленная в насыщенном томатном соусе с пряностями, подаётся с хрустящим хлебом тартин.",
-          "price_status": "not_provided",
-          "variants": [],
+          "price_status": "provided_by_owner",
+          "variants": [
+            {
+              "volume": null,
+              "price": 350
+            }
+          ],
           "photo": null,
           "ingredients": null,
           "nutrition": null,
@@ -926,8 +941,13 @@
           "name_status": "provided",
           "hit": false,
           "description": "Традиционный сытный завтрак с домашними пышками, картофелем с сушёной домашней колбасой. Душистый калмыцкий чай завершает эту гастрономическую композицию.",
-          "price_status": "not_provided",
-          "variants": [],
+          "price_status": "provided_by_owner",
+          "variants": [
+            {
+              "volume": null,
+              "price": 550
+            }
+          ],
           "photo": null,
           "ingredients": null,
           "nutrition": {
@@ -946,8 +966,13 @@
           "name_status": "provided",
           "hit": false,
           "description": "Хрустящая бельгийская вафля с нежным муссом из феты, слабосолённой форелью, яйцом пашот, ароматным сыром чеддер.",
-          "price_status": "not_provided",
-          "variants": [],
+          "price_status": "provided_by_owner",
+          "variants": [
+            {
+              "volume": null,
+              "price": 650
+            }
+          ],
           "photo": null,
           "ingredients": null,
           "nutrition": {
@@ -966,8 +991,13 @@
           "name_status": "provided",
           "hit": false,
           "description": "Сытный баварский завтрак с глазуньей, ароматными колбасками, картофелем с грибами в нежном сливочном соусе и свежим овощным салатом.",
-          "price_status": "not_provided",
-          "variants": [],
+          "price_status": "provided_by_owner",
+          "variants": [
+            {
+              "volume": null,
+              "price": 550
+            }
+          ],
           "photo": null,
           "ingredients": null,
           "nutrition": null,
@@ -980,8 +1010,19 @@
           "name_status": "provided",
           "hit": false,
           "description": "Ароматная лапша-удон с сочной курицей/креветками и свежими овощами, в насыщенном соусе якитори.",
-          "price_status": "not_provided",
-          "variants": [],
+          "price_status": "provided_by_owner",
+          "variants": [
+            {
+              "label": "С курицей",
+              "volume": null,
+              "price": 450
+            },
+            {
+              "label": "С креветками",
+              "volume": null,
+              "price": 500
+            }
+          ],
           "photo": null,
           "ingredients": null,
           "nutrition": null,
@@ -1018,8 +1059,19 @@
           "name_status": "provided",
           "hit": false,
           "description": "Сытный боул с рисом, сочной курицей/хрустящими креветками и свежими овощами, дополненный нежным ореховым соусом.",
-          "price_status": "not_provided",
-          "variants": [],
+          "price_status": "provided_by_owner",
+          "variants": [
+            {
+              "label": "С курицей",
+              "volume": null,
+              "price": 600
+            },
+            {
+              "label": "С креветками",
+              "volume": null,
+              "price": 650
+            }
+          ],
           "photo": null,
           "ingredients": null,
           "nutrition": null,
@@ -1041,7 +1093,7 @@
     "phone": null
   },
   "source_note": "Названия, цены и указанные объёмы напитков перенесены с двух сторон бумажного меню, предоставленного владельцем проекта. Уточнённые цены фрешей: апельсиновый — 350 ₽, гранатовый — 650 ₽, грейпфрутовый — 300 ₽, гранат-апельсин — 450 ₽.",
-  "food_source_note": "Названия блюд 1–8 и подробные описания 1–8 предоставлены владельцем проекта. Цены блюд пока не предоставлены. Опечатка в слове «слабосолённой» исправлена.",
+  "food_source_note": "Названия блюд 1–8, подробные описания 1–8 и цены предоставлены владельцем проекта. Для боула и удона цены с курицей и с креветками указаны отдельно. Опечатка в слове «слабосолённой» исправлена.",
   "groups": [
     {
       "id": "food",
