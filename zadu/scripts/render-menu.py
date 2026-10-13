@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INTERIOR = ROOT / "interior"
 MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
-VERSION = "20261013-clean-dishes-2"
+VERSION = "20261013-clean-dishes-3"
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
 BREAKFASTS = CATEGORIES["breakfasts"]
@@ -16,6 +16,12 @@ BREAKFASTS = CATEGORIES["breakfasts"]
 def url(target, page, directory=False):
     path = os.path.relpath(target, page.parent).replace(os.sep, "/")
     return path + "/" if directory else path
+
+def nav_url(path):
+    target, separator, anchor = path.partition('#')
+    if '?v=' not in target:
+        target += '?v='+VERSION
+    return target+(separator+anchor if separator else '')
 
 def image(entry, page, extra_class=""):
     if entry.get("photo"):
@@ -66,7 +72,7 @@ def footer(landing=False):
             '</a></div></footer>')
 
 def document(page, title, description, content, body_class, back=None):
-    back_link = '' if not back else '<a class="back-home" href="'+back[0]+'">'+escape(back[1])+'</a>'
+    back_link = '' if not back else '<a class="back-home" href="'+nav_url(back[0])+'">'+escape(back[1])+'</a>'
     landing = body_class == "landing-page"
     header_class = "landing-header" if landing else "menu-header"
     logo = url(ROOT / DATA.get("branding", {}).get("logo", "assets/logo.svg"), page)
@@ -83,7 +89,7 @@ def document(page, title, description, content, body_class, back=None):
         '  <link rel="stylesheet" href="'+url(INTERIOR / "interior.css", page)+'?v='+VERSION+'">\n'
         '</head>\n<body class="'+body_class+'">\n'
         '  <header class="site-header '+header_class+'"><a class="brand-logo" href="'+
-        url(INTERIOR, page, True)+'" aria-label="ZÁDU — главная"><img data-brand-logo src="'+logo+
+        nav_url(url(INTERIOR, page, True))+'" aria-label="ZÁDU — главная"><img data-brand-logo src="'+logo+
         '" width="207" height="168" alt="ZÁDU, кондитерская и кофейня" decoding="async"></a>'+
         back_link+'</header>\n  '+content+'\n  '+footer(landing)+
         '\n  <script src="'+url(INTERIOR / "site.js", page)+'?v='+VERSION+'"></script>\n  '+
@@ -160,7 +166,7 @@ document(bar_page, "Бар — ZÁDU", "Кофе, чай, коктейли, фр
 for entry in BREAKFASTS["items"]:
     dish_page = MENU / "breakfasts" / entry["id"] / "index.html"
     description = escape(entry["description"]) if entry.get("description") else 'Описание уточняется.'
-    return_to_card = url(MENU / "breakfasts", dish_page, True)+'#'+entry["id"]
+    return_to_card = nav_url(url(MENU / "breakfasts", dish_page, True)+'#'+entry["id"])
     price_content = prices(entry)
     price_section = ('<section class="dish-section dish-price"><h2>Цена</h2>'+
                      price_content+'</section>') if price_content else ''
