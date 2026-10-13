@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INTERIOR = ROOT / "interior"
 MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
-VERSION = "20261013-white-menu-1"
+VERSION = "20261013-drink-links-1"
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
 BREAKFASTS = CATEGORIES["breakfasts"]
@@ -80,6 +80,12 @@ def category_section(category, page, heading_level=2, dish=False):
 def drink_sections(page, heading_level=2):
     return ''.join(category_section(CATEGORIES[category_id], page, heading_level)
                    for category_id in BAR["categories"])
+
+def drink_navigation():
+    return ('<nav class="drink-category-nav" aria-label="Категории напитков">'+
+            ''.join('<a class="menu-group-card" href="#'+category_id+'">'+
+                    escape(CATEGORIES[category_id]["title"])+'</a>' for category_id in BAR["categories"])+
+            '</nav>')
 
 def footer(landing=False):
     allergy = '' if landing else '<p class="allergy-note">'+escape(DATA["allergy_note"])+'</p>'
@@ -194,7 +200,7 @@ document(dessert_page, "Десерты — ZÁDU", "Десерты кофейн�
 
 bar_page = MENU / "bar/index.html"
 document(bar_page, "Напитки — бар ZÁDU", "Кофе, чай, коктейли, фреши, шоты и лимонады ZÁDU.",
-         '<main class="bar-layout"><h1>Напитки</h1>'+drink_sections(bar_page)+'</main>',
+         '<main class="bar-layout"><h1>Напитки</h1>'+drink_navigation()+drink_sections(bar_page)+'</main>',
          "menu-page bar-page", (url(MENU, bar_page, True), "← К меню"))
 
 for entry in BREAKFASTS["items"]:
