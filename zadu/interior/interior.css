@@ -1,5 +1,5 @@
 /* White pages, ZÁDU khaki accents, and a distinct display face for headings. */
-@font-face{font-family:ZaduBrand;src:url('../assets/fonts/montserrat-brand-700.woff') format('woff');font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:ZaduBrand;src:url('../assets/fonts/montserrat-brand-600.woff') format('woff');font-style:normal;font-weight:600;font-display:swap}
 :root{--olive:#4f523d;--page:#fff;--ink:#34392f;--muted:#70746b;--line:#e2e5df;--photo:#f5f5f5;--display:Georgia,'Times New Roman',serif;font-family:Arial,Helvetica,sans-serif;color-scheme:light}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:24px}
@@ -11,7 +11,7 @@ a:focus-visible{outline:2px solid var(--olive);outline-offset:5px}
 .site-header{position:relative;display:flex;align-items:center;justify-content:center;width:min(1080px,calc(100% - 64px));margin:0 auto;padding:22px 0 16px}
 .brand-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;width:175px;min-height:142px;flex:none}
 .brand-logo img{display:block;width:70px;max-width:100%;height:auto;aspect-ratio:64/60;object-fit:contain}
-.brand-name{display:block;font-family:ZaduBrand,Arial,Helvetica,sans-serif;font-size:46px;font-weight:700;font-synthesis:none;line-height:1.2;letter-spacing:-.025em;color:#39462d;text-align:center}
+.brand-name{display:block;font-family:ZaduBrand,Arial,Helvetica,sans-serif;font-size:46px;font-weight:600;font-synthesis:none;line-height:1.2;letter-spacing:-.025em;color:#68705d;text-align:center}
 .back-home{position:absolute;left:0;top:32px;display:flex;align-items:center;min-height:44px;max-width:160px;font-size:14px;color:var(--olive)}
 .landing-main{width:min(1100px,calc(100% - 48px));margin:0 auto}
 .interior-frame{position:relative;isolation:isolate;overflow:hidden;min-height:500px;height:calc(100vh - 180px);height:calc(100svh - 180px);max-height:1100px;background:var(--photo)}

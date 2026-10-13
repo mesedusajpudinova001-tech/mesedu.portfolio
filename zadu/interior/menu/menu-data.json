@@ -1132,8 +1132,8 @@
     }
   ],
   "branding": {
-    "logo": "assets/brand-mark.svg",
-    "source_note": "Original cafe emblem isolated from the existing logo by its SVG viewport, without redrawing. The original full logo is retained in assets/logo.svg; the name is displayed separately as text."
+    "logo": "assets/brand-mark-balanced.svg",
+    "source_note": "Original cafe emblem isolated from the existing logo by its SVG viewport, without redrawing. Its contrast and khaki ink are balanced with the separate ZÁDU wordmark; the original full logo is retained in assets/logo.svg."
   },
   "interior": {
     "photo": null,

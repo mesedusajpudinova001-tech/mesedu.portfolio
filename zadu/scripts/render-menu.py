@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INTERIOR = ROOT / "interior"
 MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
-VERSION = "20261013-bavarian-nutrition-1"
+VERSION = "20261013-balanced-brand-1"
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
 BREAKFASTS = CATEGORIES["breakfasts"]
@@ -109,7 +109,7 @@ def document(page, title, description, content, body_class, back=None):
         '  <meta name="description" content="'+escape(description, quote=True)+'">\n'
         '  <title>'+escape(title)+'</title>\n'
         '  <link rel="icon" type="image/svg+xml" href="'+url(ROOT / "assets/favicon.svg", page)+'">\n'
-        '  <link rel="preload" href="'+url(ROOT / "assets/fonts/montserrat-brand-700.woff", page)+'" as="font" type="font/woff" crossorigin>\n'
+        '  <link rel="preload" href="'+url(ROOT / "assets/fonts/montserrat-brand-600.woff", page)+'" as="font" type="font/woff" crossorigin>\n'
         '  <link rel="stylesheet" href="'+url(INTERIOR / "interior.css", page)+'?v='+VERSION+'">\n'
         '</head>\n<body class="'+body_class+'">\n'
         '  <header class="site-header '+header_class+'"><a class="brand-logo" href="'+
