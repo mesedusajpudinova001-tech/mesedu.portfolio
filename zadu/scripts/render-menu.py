@@ -86,7 +86,7 @@ def document(page, title, description, content, body_class, back=None):
         '\n  <script src="'+url(INTERIOR / "site.js", page)+'?v='+VERSION+'"></script>\n  '+
         compat+motion+'\n</body>\n</html>\n')
     page.parent.mkdir(parents=True, exist_ok=True)
-    page.write_text(output)
+    page.write_text('\n'.join(line.rstrip() for line in output.splitlines())+'\n')
 
 def nutrition(entry):
     values = entry.get("nutrition") or {}
