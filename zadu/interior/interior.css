@@ -1,0 +1,127 @@
+/* ZÁDU: warm beige surfaces, quiet borders and clear warm text. */
+:root{--olive:#4f523d;--milk:#f7f4ed;--paper:#fffdf7;--ink:#443d33;--muted:#6f614f;--line:rgba(100,84,63,.18);font-family:Arial,Helvetica,sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:18px;overflow-x:clip}
+body{margin:0;background:var(--milk);color:var(--ink);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:5px}
+[hidden]{display:none!important}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.image-definitions{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+.site-header{display:flex;align-items:center;width:min(1100px,calc(100% - 64px));min-height:208px;margin:0 auto;padding:24px 0;gap:24px}
+.landing-header{justify-content:center}
+.menu-header{justify-content:space-between}
+.brand-logo{display:block;flex:none;width:185px}
+.brand-logo svg{display:block;width:100%;height:auto;overflow:hidden;filter:grayscale(1) invert(1) contrast(5);mix-blend-mode:multiply;opacity:.82}
+.back-home{display:flex;align-items:center;min-height:44px;font-size:14px;border-bottom:1px solid var(--line)}
+.landing-main{width:min(960px,calc(100% - 64px));margin:0 auto}
+.interior-link{display:block}
+.interior-frame{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;min-height:340px;height:clamp(340px,57svh,560px);padding:32px;background:#e9e0d2;color:var(--muted);border:1px solid var(--line);border-radius:10px;text-align:center}
+.interior-placeholder-icon{width:94px;height:94px;opacity:.5}
+.interior-frame>span{font-family:Georgia,'Times New Roman',serif;font-size:30px;font-weight:400;line-height:1.25}
+.interior-caption{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:19px 0 21px;border-bottom:1px solid var(--line);font-family:Georgia,'Times New Roman',serif;font-size:31px;line-height:1.2}
+.round-arrow{display:grid;place-items:center;flex:none;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;font-family:Arial,Helvetica,sans-serif;font-size:25px}
+.page-footer{width:min(1100px,calc(100% - 64px));margin:0 auto;padding:24px 0 max(28px,env(safe-area-inset-bottom));text-align:center}
+.page-footer p{margin:0 0 9px;color:var(--muted);font-size:11px}
+.page-footer a{display:inline-flex;align-items:center;gap:12px;min-height:44px;font-size:12px;border-bottom:1px solid var(--line)}
+.menu-layout{display:grid;grid-template-columns:255px minmax(0,1fr);gap:56px;align-items:start;width:min(1100px,calc(100% - 64px));margin:18px auto 0}
+.category-list{position:sticky;top:24px;display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:0;margin:0;scroll-margin-top:18px}
+.category-link{display:flex;align-items:center;min-height:44px;padding:7px 0;font-size:20px;line-height:1.25;color:var(--muted);transition:color .2s}
+.category-link:hover,.category-link.active{color:var(--ink)}
+.category-link.active{text-decoration:underline;text-underline-offset:7px;text-decoration-thickness:1px;text-decoration-color:rgba(100,84,63,.5)}
+.menu-content{min-width:0}
+.menu-category{margin-bottom:48px;scroll-margin-top:18px}
+.section-header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:9px 20px;margin:0 0 25px}
+h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400}
+.section-header h2{margin:0;font-size:44px;letter-spacing:-.04em;line-height:1.1;overflow-wrap:anywhere;outline:0}
+.all-sections{display:flex;align-items:center;flex:none;min-height:44px;font-size:12px;color:var(--muted)}
+.item-group-title{font-family:Arial,Helvetica,sans-serif;font-size:22px;color:var(--muted);margin:0 0 20px}
+.item-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start}
+.menu-item{min-width:0;overflow:hidden;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:9px}
+.item-photo{position:relative;width:100%;aspect-ratio:1.2;overflow:hidden;background:#e9e2d5}
+.item-photo>img,.item-photo>svg{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;overflow:hidden}
+.item-copy{padding:20px 20px 22px}
+.item-title{display:flex;justify-content:space-between;align-items:baseline;gap:15px}
+.item-title h3{margin:0;min-width:0;font-size:28px;line-height:1.15;letter-spacing:-.04em;overflow-wrap:anywhere}
+.item-price{margin:0;flex:none;font-size:21px;font-weight:600;white-space:nowrap;letter-spacing:-.025em}
+.item-description{font-size:15px;line-height:1.6;margin:11px 0 8px;color:#6c5f51}
+.item-portion{font-size:13px;line-height:1.4;margin:0;color:var(--muted)}
+.empty-menu{padding:26px;background:var(--paper);color:var(--muted);border:1px solid var(--line);border-radius:9px;font-size:15px;line-height:1.65}
+.empty-menu p{margin:0}
+.menu-footer{margin-top:10px;border-top:1px solid var(--line)}
+@media(max-width:1000px){.menu-layout{grid-template-columns:230px minmax(0,1fr);gap:36px}.item-grid{grid-template-columns:1fr}.menu-content{max-width:620px}}
+@media(max-width:740px){
+  .site-header{width:calc(100% - 36px);min-height:151px;padding:16px 0 18px}
+  .brand-logo{width:145px}
+  .back-home{font-size:12px}
+  .landing-main,.page-footer{width:calc(100% - 36px)}
+  .interior-frame{min-height:300px;height:clamp(300px,55svh,480px);padding:24px;border-radius:10px;gap:18px}
+  .interior-placeholder-icon{width:76px;height:76px}
+  .interior-frame>span{font-size:25px;max-width:260px}
+  .interior-caption{font-size:27px;padding:16px 0 18px}
+  .landing-footer{padding-top:20px}
+  .page-footer p{font-size:10px;line-height:1.5}
+  .menu-layout{display:block;width:calc(100% - 36px);margin-top:23px}
+  .category-list{position:static;margin-bottom:41px;gap:0}
+  .category-link{font-size:21px;min-height:44px;padding:8px 0}
+  .menu-content{max-width:none}
+  .section-header{margin-bottom:22px;gap:7px 16px}
+  .section-header h2{font-size:40px}
+  .item-group-title{font-size:21px;margin-bottom:18px}
+  .item-grid{gap:22px}
+  .item-copy{padding:18px 18px 20px}
+  .item-title h3{font-size:29px}
+  .item-price{font-size:23px}
+  .item-description{font-size:15px}
+  .item-portion{font-size:13px}
+  .empty-menu{padding:22px;font-size:14px}
+  .menu-category{margin-bottom:36px}
+}
+@media(max-width:350px){.brand-logo{width:134px}.back-home{font-size:11px}.interior-caption{font-size:24px}.category-link{font-size:20px}.item-title h3{font-size:26px}.item-price{font-size:21px}.item-copy{padding:17px 15px 19px}.section-header h2{font-size:35px}}
+@supports not (overflow:clip){html,body{overflow-x:hidden}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Menu cards reserve space for the café's future photographs. */
+.menu-photo-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#eee8dd;color:var(--muted)}
+.menu-photo-placeholder>svg{position:static;inset:auto;width:48px;height:48px;stroke:currentColor;stroke-width:1.25;opacity:.6}
+.menu-photo-placeholder>span{font:14px/1.5 Arial,Helvetica,sans-serif;letter-spacing:.01em}
+.dialog-photo{aspect-ratio:1.5;margin-bottom:22px;border-radius:8px}
+.item-text-card .item-copy{padding:21px 22px}
+.item-text-card .item-title{align-items:flex-start}
+.item-text-card .item-title h3{font-size:25px;line-height:1.25;letter-spacing:-.025em}
+.item-text-card .item-price{font-size:22px;line-height:1.4}
+.item-text-card .item-portion{margin-top:9px;font-size:14px}
+.item-text-card .item-title h3:has(.menu-hit){line-height:1.4}
+.category-note{margin:-10px 0 22px;font-size:15px;line-height:1.55;color:var(--muted)}
+.variant-list{margin-top:15px}
+.variant-row{display:flex;align-items:baseline;justify-content:space-between;gap:18px;padding:9px 0;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
+.variant-row strong{flex:none;font-size:21px;font-weight:600;color:var(--ink);white-space:nowrap;letter-spacing:-.02em}
+.menu-hit{display:inline-block;vertical-align:middle;margin-left:9px;padding:4px 7px;background:#ede7dc;color:#6f614f;border-radius:4px;font:600 10px/1.1 Arial,Helvetica,sans-serif;letter-spacing:.04em}
+.page-footer .allergy-note{width:min(620px,100%);margin:0 auto 19px;padding:17px 20px;background:var(--paper);border:1px solid var(--line);border-radius:9px;color:var(--ink);font-size:14px;line-height:1.6}
+.page-footer .location-link{gap:14px;font-size:13px;line-height:1.6;text-align:left;min-height:44px;padding-bottom:5px}
+.location-link>span:last-child{flex:none}
+@media(max-width:740px){.item-grid{gap:14px}.item-text-card .item-copy{padding:19px 18px}.item-text-card .item-title h3{font-size:25px}.item-text-card .item-price{font-size:22px}.category-note{font-size:14px}.variant-row strong{font-size:22px}.page-footer .location-link{font-size:12px}.page-footer .allergy-note{font-size:13px;padding:16px 18px}}
+@media(max-width:350px){.item-text-card .item-copy{padding:18px 15px}.item-text-card .item-title h3{font-size:23px}.item-text-card .item-price{font-size:20px}.variant-row{gap:12px;font-size:13px}.variant-row strong{font-size:20px}}
+
+/* Dish descriptions appear only in the detail dialog after a card is selected. */
+.description-trigger{display:block;width:100%;margin:0;padding:0;border:0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.description-trigger:focus-visible{outline:2px solid var(--ink);outline-offset:-5px;border-radius:9px}
+.description-arrow{flex:none;color:var(--muted);font:22px/1.2 Arial,Helvetica,sans-serif}
+.item-price-pending{margin:12px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
+.food-dialog{position:fixed;width:min(560px,calc(100% - 32px));max-height:85vh;max-height:85svh;inset:0;margin:auto;padding:28px;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:14px;overflow:auto;overscroll-behavior:contain}
+.food-dialog::backdrop{background:rgba(53,45,35,.38)}
+.food-dialog-close{position:absolute;z-index:1;right:16px;top:16px;display:grid;place-items:center;width:44px;height:44px;padding:0;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:50%;font:27px/1 Arial,Helvetica,sans-serif;cursor:pointer}
+.food-dialog-close:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.food-dialog h2{margin:0;padding-right:46px;font-size:31px;line-height:1.2;letter-spacing:-.035em}
+.food-dialog-copy{margin:21px 0 0;color:#6c5f51;font-size:16px;line-height:1.7}
+.food-dialog-price{margin:20px 0 0;color:var(--muted);font-size:13px;line-height:1.5}
+html.food-dialog-open,html.food-dialog-open body{overflow:hidden}
+@media(max-width:740px){.food-dialog{top:auto;bottom:0;width:100%;margin:0 auto;padding:26px 22px max(28px,env(safe-area-inset-bottom));border-radius:18px 18px 0 0}.food-dialog h2{font-size:29px}.food-dialog-copy{font-size:16px;line-height:1.65}}
+
+/* Cards appear once as they enter the viewport; only opacity and transform move. */
+.reveal-pending{opacity:0;transform:translateY(24px)}
+.reveal-enter{animation:card-appear 700ms cubic-bezier(.22,.61,.36,1) both}
+.dessert-card.reveal-enter:nth-child(2){animation-delay:90ms}
+@keyframes card-appear{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.reveal-enter{animation-duration:650ms}}
+@media(prefers-reduced-motion:reduce){.reveal-pending,.reveal-enter{opacity:1!important;transform:none!important;animation:none!important}}
