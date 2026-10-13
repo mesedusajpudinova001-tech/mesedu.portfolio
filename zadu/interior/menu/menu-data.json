@@ -876,8 +876,14 @@
           "variants": [],
           "photo": null,
           "ingredients": null,
-          "nutrition": null,
-          "nutrition_status": "not_provided"
+          "nutrition": {
+            "calories": "690–740",
+            "protein": "~40–43",
+            "fat": "~38–42",
+            "carbohydrates": "~40–45",
+            "basis": null
+          },
+          "nutrition_status": "provided_by_owner"
         },
         {
           "id": "dish-2",
@@ -890,8 +896,14 @@
           "variants": [],
           "photo": null,
           "ingredients": null,
-          "nutrition": null,
-          "nutrition_status": "not_provided"
+          "nutrition": {
+            "calories": "~620–680",
+            "protein": "~20–24",
+            "fat": "~24–28",
+            "carbohydrates": "~75–85",
+            "basis": null
+          },
+          "nutrition_status": "provided_by_owner"
         },
         {
           "id": "dish-3",
@@ -918,8 +930,14 @@
           "variants": [],
           "photo": null,
           "ingredients": null,
-          "nutrition": null,
-          "nutrition_status": "not_provided"
+          "nutrition": {
+            "calories": "855–900",
+            "protein": "~29–31",
+            "fat": "~36–41",
+            "carbohydrates": "~105–112",
+            "basis": null
+          },
+          "nutrition_status": "provided_by_owner"
         },
         {
           "id": "dish-5",
@@ -932,8 +950,14 @@
           "variants": [],
           "photo": null,
           "ingredients": null,
-          "nutrition": null,
-          "nutrition_status": "not_provided"
+          "nutrition": {
+            "calories": "~1080–1135",
+            "protein": "~38–44",
+            "fat": "~71–75",
+            "carbohydrates": "~70–80",
+            "basis": null
+          },
+          "nutrition_status": "provided_by_owner"
         },
         {
           "id": "dish-8",
@@ -961,7 +985,19 @@
           "photo": null,
           "ingredients": null,
           "nutrition": null,
-          "nutrition_status": "not_provided"
+          "nutrition_status": "not_provided",
+          "nutrition_variants": [
+            {
+              "label": "С курицей",
+              "nutrition": null,
+              "nutrition_status": "not_provided"
+            },
+            {
+              "label": "С креветками",
+              "nutrition": null,
+              "nutrition_status": "not_provided"
+            }
+          ]
         },
         {
           "id": "dish-7",
@@ -1020,5 +1056,5 @@
     "photo": null,
     "photo_alt": "Интерьер кофейни ZÁDU"
   },
-  "nutrition_source_note": "Primary owner-provided nutrition figures are unavailable. No calculated estimates are published."
+  "nutrition_source_note": "КБЖУ скрембла, сырников, завтрака «Дагестан» и бельгийской вафли перенесены из ответов владелицы. Диапазоны и знаки ~ сохранены. База на порцию или на 100 г не указана. КБЖУ удона на предоставленных скриншотах отсутствуют."
 }

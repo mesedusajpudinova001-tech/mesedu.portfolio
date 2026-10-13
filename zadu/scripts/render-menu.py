@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INTERIOR = ROOT / "interior"
 MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
-VERSION = "20261013-owner-update"
+VERSION = "20261013-nutrition-1"
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
 BREAKFASTS = CATEGORIES["breakfasts"]
@@ -28,9 +28,12 @@ def image(entry, page, extra_class=""):
             '<span>Здесь будет фото</span></div>')
 
 def prices(entry):
-    variants = entry.get("variants", [])
+    # A missing price stays invisible. Zero is never a temporary price.
+    variants = [v for v in (entry.get("variants") or [])
+                if isinstance(v.get("price"), (int, float))
+                and not isinstance(v["price"], bool) and v["price"] > 0]
     if not variants:
-        return '<p class="item-price-pending">Цена уточняется</p>'
+        return ''
     if len(variants) == 1:
         v = variants[0]
         portion = ' · '.join(x for x in [v.get("volume"), v.get("label")] if x)
@@ -88,8 +91,8 @@ def document(page, title, description, content, body_class, back=None):
     page.parent.mkdir(parents=True, exist_ok=True)
     page.write_text('\n'.join(line.rstrip() for line in output.splitlines())+'\n')
 
-def nutrition(entry):
-    values = entry.get("nutrition") or {}
+def nutrition_values(values):
+    values = values or {}
     # Display only supplied values. Never calculate or estimate from a recipe.
     labels = [("calories", "Калории", "ккал"), ("protein", "Белки", "г"),
               ("fat", "Жиры", "г"), ("carbohydrates", "Углеводы", "г")]
@@ -100,6 +103,15 @@ def nutrition(entry):
         text = escape(str(value))+' '+unit if value is not None else 'Уточняется'
         rows.append('<div><dt>'+label+'</dt><dd>'+text+'</dd></div>')
     return basis+'<dl class="nutrition-grid">'+''.join(rows)+'</dl>'
+
+def nutrition(entry):
+    options = entry.get("nutrition_variants")
+    if options:
+        return ''.join(
+            '<div class="nutrition-option"><h3>'+escape(option["label"])+
+            '</h3>'+nutrition_values(option.get("nutrition"))+'</div>'
+            for option in options)
+    return nutrition_values(entry.get("nutrition"))
 
 landing_page = INTERIOR / "index.html"
 landing_content = (
@@ -153,13 +165,16 @@ for entry in BREAKFASTS["items"]:
     composition = escape(ingredients) if ingredients else 'Состав уточняется.'
     description = escape(entry["description"]) if entry.get("description") else 'Описание уточняется.'
     return_to_card = url(MENU / "breakfasts", dish_page, True)+'#'+entry["id"]
+    price_content = prices(entry)
+    price_section = ('<section class="dish-section dish-price"><h2>Цена</h2>'+
+                     price_content+'</section>') if price_content else ''
     details = (
         '<main class="dish-layout"><div class="dish-image">'+image(entry, dish_page, "dish-photo")+
         '</div><div class="dish-copy"><h1>'+escape(entry["name"])+'</h1>'
         '<section class="dish-section"><h2>Описание</h2><p>'+description+'</p></section>'
         '<section class="dish-section"><h2>Состав</h2><p>'+composition+'</p></section>'
-        '<section class="dish-section"><h2>КБЖУ</h2>'+nutrition(entry)+'</section>'
-        '<section class="dish-section dish-price"><h2>Цена</h2>'+prices(entry)+'</section>'
+        '<section class="dish-section"><h2>КБЖУ</h2>'+nutrition(entry)+'</section>'+
+        price_section+
         '<a class="return-to-breakfasts" href="'+return_to_card+'">← Все завтраки</a></div></main>')
     document(dish_page, entry["name"]+" — ZÁDU", entry.get("description", entry["name"]), details,
              "menu-page dish-page", (return_to_card, "← К завтракам"))
