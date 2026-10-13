@@ -159,10 +159,6 @@ document(bar_page, "Бар — ZÁDU", "Кофе, чай, коктейли, фр
 
 for entry in BREAKFASTS["items"]:
     dish_page = MENU / "breakfasts" / entry["id"] / "index.html"
-    ingredients = entry.get("ingredients")
-    if isinstance(ingredients, list):
-        ingredients = ', '.join(ingredients)
-    composition = escape(ingredients) if ingredients else 'Состав уточняется.'
     description = escape(entry["description"]) if entry.get("description") else 'Описание уточняется.'
     return_to_card = url(MENU / "breakfasts", dish_page, True)+'#'+entry["id"]
     price_content = prices(entry)
@@ -172,7 +168,6 @@ for entry in BREAKFASTS["items"]:
         '<main class="dish-layout"><div class="dish-image">'+image(entry, dish_page, "dish-photo")+
         '</div><div class="dish-copy"><h1>'+escape(entry["name"])+'</h1>'
         '<section class="dish-section"><h2>Описание</h2><p>'+description+'</p></section>'
-        '<section class="dish-section"><h2>Состав</h2><p>'+composition+'</p></section>'
         '<section class="dish-section"><h2>КБЖУ</h2>'+nutrition(entry)+'</section>'+
         price_section+
         '<a class="return-to-breakfasts" href="'+return_to_card+'">← Все завтраки</a></div></main>')
