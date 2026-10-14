@@ -1,6 +1,6 @@
 /* White pages, ZÁDU khaki accents, and a distinct display face for headings. */
 @font-face{font-family:ZaduBrand;src:url('../assets/fonts/montserrat-brand-600.woff') format('woff');font-style:normal;font-weight:600;font-display:swap}
-:root{--olive:#4f523d;--page:#fff;--ink:#34392f;--muted:#70746b;--line:#e2e5df;--photo:#f5f5f5;--display:Georgia,'Times New Roman',serif;font-family:Arial,Helvetica,sans-serif;color-scheme:light}
+:root{--olive:#4f523d;--price:#806338;--page:#fff;--ink:#34392f;--muted:#70746b;--line:#e2e5df;--photo:#f5f5f5;--display:Georgia,'Times New Roman',serif;font-family:Arial,Helvetica,sans-serif;color-scheme:light}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:24px}
 body{margin:0;background:var(--page);color:var(--ink);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
@@ -61,31 +61,30 @@ h1{margin:0 0 28px;font-size:46px;line-height:1.15;letter-spacing:-.025em;overfl
 .menu-photo-placeholder span{font-size:12px}
 .item-copy{padding:16px 0 0}
 .item-title h3,.drinks-section .item-title h3{margin:0;font:600 19px/1.4 Arial,Helvetica,sans-serif;letter-spacing:0;color:var(--ink);text-align:left;overflow-wrap:anywhere}
-.item-price{margin:10px 0 0;font-size:18px;font-weight:400;line-height:1.4}
+.item-price{margin:10px 0 0;color:var(--price);font-size:18px;font-weight:500;line-height:1.4;white-space:nowrap}
 .item-portion{margin:4px 0 0;color:var(--muted);font-size:13px}
 .variant-list{margin-top:10px}
 .variant-row{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:4px 10px;padding:8px 0;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
-.variant-row strong{color:var(--ink);font-size:17px;font-weight:400;white-space:nowrap}
+.variant-row strong{color:var(--price);font-size:17px;font-weight:500;white-space:nowrap}
 .menu-hit{display:inline-block;margin-left:6px;padding:3px 6px;vertical-align:middle;color:var(--olive);border:1px solid var(--line);border-radius:4px;font:500 10px/1.2 Arial,Helvetica,sans-serif}
 .dish-card-link{display:block;height:100%}
 .dish-card-link:hover .item-title h3{color:var(--olive)}
 .dish-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:48px;min-height:65vh}
 .dish-image{position:sticky;top:24px;min-width:0}
 .dish-copy{min-width:0}
-.dish-copy h1{margin-bottom:28px;font-size:36px;line-height:1.2}
+.dish-copy h1{margin-bottom:28px;font-size:36px;line-height:1.2;text-align:left}
 .dish-section{margin-top:26px}
-.dish-section h2{margin:0 0 16px;font-size:24px;line-height:1.2}
+.dish-section h2{margin:0 0 16px;font-size:24px;line-height:1.2;text-align:left}
 .dish-section p{margin:0;color:var(--muted);font-size:16px;line-height:1.7;overflow-wrap:anywhere}
-.nutrition-basis{margin-bottom:12px!important;text-align:center}
+.nutrition-basis{margin-bottom:12px!important;text-align:left}
 .nutrition-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px;margin:0}
 .nutrition-grid div{min-width:0;padding:13px 0;border-bottom:1px solid var(--line)}
 .nutrition-grid dt{color:var(--muted);font-size:13px}
 .nutrition-grid dd{margin:4px 0 0;font-size:16px;overflow-wrap:anywhere}
-.nutrition-option h3{margin:0 0 8px;font-size:15px;line-height:1.3;font-weight:500;text-align:center;color:var(--olive)}
+.nutrition-option h3{margin:0 0 8px;font-size:15px;line-height:1.3;font-weight:500;text-align:left;color:var(--olive)}
 .nutrition-option+.nutrition-option{margin-top:28px}
-.dish-price .item-price{color:var(--ink);font-size:25px;text-align:center}
-.dish-price .item-portion{text-align:center}
-.item-price.reference-price,.variant-row .reference-price,.dish-price .item-price.reference-price{color:#8e7955}
+.dish-price .item-price{color:var(--price);font-size:24px;line-height:1.4;text-align:left}
+.dish-price .item-portion{margin-top:6px;font-size:13px;text-align:left}
 .return-to-breakfasts{display:flex;align-items:center;justify-content:center;min-height:50px;margin-top:32px;padding:12px 18px;border:1px solid rgba(79,82,61,.55);border-radius:14px;color:var(--olive);font-size:14px}
 @media(max-width:740px){
  .site-header{width:calc(100% - 36px);padding:18px 0 14px}

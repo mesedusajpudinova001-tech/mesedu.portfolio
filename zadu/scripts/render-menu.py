@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INTERIOR = ROOT / "interior"
 MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
-VERSION = "20261014-six-dish-labels"
+VERSION = "20261014-prices-nutrition"
 LANDING_STYLE_VERSION = "20261014-transparent-home-buttons"
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
@@ -54,17 +54,21 @@ def prices(entry):
                 and not isinstance(v["price"], bool) and v["price"] > 0]
     if not variants:
         return ''
-    reference_class = ' reference-price' if entry.get("reference_price_style") else ''
     if len(variants) == 1:
         v = variants[0]
         portion = ' · '.join(x for x in [v.get("volume"), v.get("label")] if x)
-        return ('<p class="item-price'+reference_class+'">'+escape(str(v["price"]))+' ₽</p>'+
+        return ('<p class="item-price">'+escape(str(v["price"]))+' ₽</p>'+
                 ('<p class="item-portion">'+escape(portion)+'</p>' if portion else ''))
+    if entry.get("compact_variant_prices"):
+        amounts = ' / '.join(str(v["price"]) for v in variants)
+        labels = ' / '.join(v["label"] for v in variants)
+        accessible = '; '.join(v["label"]+': '+str(v["price"])+' ₽' for v in variants)
+        return ('<p class="item-price" aria-label="'+escape(accessible, quote=True)+'">'+
+                escape(amounts)+' ₽</p><p class="item-portion">'+escape(labels)+'</p>')
     rows = []
     for v in variants:
         label = ' · '.join(x for x in [v.get("volume"), v.get("label")] if x)
-        strong_class = ' class="reference-price"' if reference_class else ''
-        rows.append('<div class="variant-row"><span>'+escape(label)+'</span><strong'+strong_class+'>'+
+        rows.append('<div class="variant-row"><span>'+escape(label)+'</span><strong>'+
                     escape(str(v["price"]))+' ₽</strong></div>')
     return '<div class="variant-list">'+''.join(rows)+'</div>'
 
@@ -79,6 +83,11 @@ def dish_views(entry):
             view.pop(key, None)
         selected = next(v for v in entry["variants"] if v.get("label") == label)
         view["variants"] = [{**selected, "label": None}]
+        if entry.get("nutrition_variants"):
+            supplied = next(v for v in entry["nutrition_variants"] if v["label"] == label)
+            view["nutrition"] = supplied["nutrition"]
+            view["nutrition_status"] = supplied["nutrition_status"]
+            view.pop("nutrition_variants", None)
         if label == "С курицей":
             view["photo_alt"] = view["name"]
         else:
@@ -176,7 +185,7 @@ def nutrition(entry):
     options = entry.get("nutrition_variants")
     if options:
         return ''.join(
-            '<div class="nutrition-option"><h3>'+escape(option["label"])+
+            '<div class="nutrition-option"><h3>'+escape(option["label"].rstrip(':'))+':'+
             '</h3>'+nutrition_values(option.get("nutrition"))+'</div>'
             for option in options)
     return nutrition_values(entry.get("nutrition"))
@@ -253,14 +262,14 @@ for entry in DISH_VIEWS:
     description = escape(entry["description"]) if entry.get("description") else 'Описание уточняется.'
     return_to_card = nav_url(url(MENU / "breakfasts", dish_page, True)+'#'+entry["id"])
     price_content = prices(entry)
-    price_section = ('<section class="dish-section dish-price"><h2>Цена</h2>'+
+    price_section = ('<section class="dish-section dish-price" aria-label="Цена">'+
                      price_content+'</section>') if price_content else ''
     details = (
         '<main class="dish-layout"><div class="dish-image">'+image(entry, dish_page, "dish-photo")+
         '</div><div class="dish-copy"><h1>'+escape(entry["name"])+'</h1>'
-        '<section class="dish-section"><p>'+description+'</p></section>'
-        '<section class="dish-section"><h2>КБЖУ</h2>'+nutrition(entry)+'</section>'+
+        '<section class="dish-section"><p>'+description+'</p></section>'+
         price_section+
+        '<section class="dish-section"><h2>КБЖУ</h2>'+nutrition(entry)+'</section>'+
         '<a class="return-to-breakfasts" href="'+return_to_card+'">← Все завтраки</a></div></main>')
     document(dish_page, entry["name"]+" — ZÁDU", entry.get("description", entry["name"]), details,
              "menu-page dish-page", (return_to_card, "← К завтракам"))

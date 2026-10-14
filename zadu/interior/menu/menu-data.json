@@ -1076,7 +1076,8 @@
           ],
           "photo_alt": "Удон в азиатском стиле с курицей",
           "photo_framing": "center-591x442",
-          "photo_caption": "На фото — с курицей"
+          "photo_caption": "На фото — с курицей",
+          "compact_variant_prices": true
         },
         {
           "id": "dish-7",
@@ -1101,7 +1102,31 @@
           "photo": "assets/dishes/bowl-chicken-20261014.png",
           "ingredients": null,
           "nutrition": null,
-          "nutrition_status": "not_provided",
+          "nutrition_status": "provided_by_owner",
+          "nutrition_variants": [
+            {
+              "label": "С курицей",
+              "nutrition": {
+                "calories": "~800–830",
+                "protein": "~34–37",
+                "fat": "~40–43",
+                "carbohydrates": "84–87",
+                "basis": null
+              },
+              "nutrition_status": "provided_by_owner"
+            },
+            {
+              "label": "С креветками",
+              "nutrition": {
+                "calories": "~527–587",
+                "protein": "~23,1–27,1",
+                "fat": "~16,2–20,2",
+                "carbohydrates": "68,2–78,2",
+                "basis": null
+              },
+              "nutrition_status": "provided_by_owner"
+            }
+          ],
           "photo_alt": "Поке с курицей",
           "photo_framing": "center-591x442",
           "photo_variants": [
@@ -1177,5 +1202,5 @@
     "photo": "assets/interior-zadu-20261014.png",
     "photo_alt": "Интерьер кофейни ZÁDU: стойка, витрина с десертами и столики"
   },
-  "nutrition_source_note": "КБЖУ скрембла, сырников, завтрака «Дагестан», бельгийской вафли, «Баварского утра» и удона перенесены дословно из ответов владелицы. Удон с курицей и с креветками указан отдельно. Диапазоны и знаки ~ сохранены. База на порцию или на 100 г не указана."
+  "nutrition_source_note": "КБЖУ скрембла, сырников, завтрака «Дагестан», бельгийской вафли, «Баварского утра» и удона перенесены из ответов владелицы. КБЖУ боула с курицей (название на сайте «Поке с курицей») и боула с креветками добавлены из предоставленного скриншота. Удон и боул с курицей и с креветками указаны отдельно. Диапазоны, десятичные запятые и знаки ~ сохранены. База на порцию или на 100 г не указана."
 }
