@@ -1167,8 +1167,8 @@
     "source_note": "Original cafe emblem isolated from the existing logo by its SVG viewport, without redrawing. Its contrast and khaki ink are balanced with the separate ZÁDU wordmark; the original full logo is retained in assets/logo.svg."
   },
   "interior": {
-    "photo": null,
-    "photo_alt": "Интерьер кофейни ZÁDU"
+    "photo": "assets/interior-zadu-20261014.png",
+    "photo_alt": "Интерьер кофейни ZÁDU: стойка, витрина с десертами и столики"
   },
   "nutrition_source_note": "КБЖУ скрембла, сырников, завтрака «Дагестан», бельгийской вафли, «Баварского утра» и удона перенесены дословно из ответов владелицы. Удон с курицей и с креветками указан отдельно. Диапазоны и знаки ~ сохранены. База на порцию или на 100 г не указана."
 }

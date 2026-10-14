@@ -168,11 +168,16 @@ def nutrition(entry):
     '</body></html>\n')
 
 landing_page = INTERIOR / "index.html"
+interior = DATA.get("interior", {})
+interior_source = (' src="'+escape(url(ROOT / interior["photo"], landing_page), quote=True)+'"'
+                   if interior.get("photo") else ' hidden')
+interior_alt = escape(interior.get("photo_alt") or "Интерьер кофейни ZÁDU", quote=True)
+placeholder_hidden = ' hidden' if interior.get("photo") else ''
 landing_content = (
     '<main class="landing-main"><h1 class="visually-hidden">Кондитерская и кофейня ZÁDU</h1>'
-    '<div class="interior-frame"><img class="interior-photo" data-interior-photo hidden'
-    ' alt="Интерьер кофейни ZÁDU" decoding="async">'
-    '<div class="interior-placeholder" data-interior-placeholder aria-hidden="true">'
+    '<div class="interior-frame"><img class="interior-photo" data-interior-photo'+interior_source+
+    ' alt="'+interior_alt+'" decoding="async" fetchpriority="high">'
+    '<div class="interior-placeholder" data-interior-placeholder'+placeholder_hidden+' aria-hidden="true">'
     '<svg class="interior-placeholder-icon" viewBox="0 0 96 96" fill="none">'
     '<path d="M17 13h62v45H17zM48 13v45M17 35h62M27 76h42M34 76v12M62 76v12'
     'M12 62v26M12 75h14M84 62v26M70 75h14" stroke="currentColor" stroke-width="1.5"'
