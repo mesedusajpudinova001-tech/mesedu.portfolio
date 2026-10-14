@@ -85,6 +85,7 @@ h1{margin:0 0 28px;font-size:46px;line-height:1.15;letter-spacing:-.025em;overfl
 .nutrition-option+.nutrition-option{margin-top:28px}
 .dish-price .item-price{color:var(--ink);font-size:25px;text-align:center}
 .dish-price .item-portion{text-align:center}
+.item-price.reference-price,.variant-row .reference-price,.dish-price .item-price.reference-price{color:#8e7955}
 .return-to-breakfasts{display:flex;align-items:center;justify-content:center;min-height:50px;margin-top:32px;padding:12px 18px;border:1px solid rgba(79,82,61,.55);border-radius:14px;color:var(--olive);font-size:14px}
 @media(max-width:740px){
  .site-header{width:calc(100% - 36px);padding:18px 0 14px}

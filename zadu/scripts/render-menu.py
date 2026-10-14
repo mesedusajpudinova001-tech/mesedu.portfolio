@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INTERIOR = ROOT / "interior"
 MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
-VERSION = "20261014-original-dish-photos"
+VERSION = "20261014-six-dish-labels"
 LANDING_STYLE_VERSION = "20261014-transparent-home-buttons"
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
@@ -54,19 +54,43 @@ def prices(entry):
                 and not isinstance(v["price"], bool) and v["price"] > 0]
     if not variants:
         return ''
+    reference_class = ' reference-price' if entry.get("reference_price_style") else ''
     if len(variants) == 1:
         v = variants[0]
         portion = ' · '.join(x for x in [v.get("volume"), v.get("label")] if x)
-        return ('<p class="item-price">'+escape(str(v["price"]))+' ₽</p>'+
+        return ('<p class="item-price'+reference_class+'">'+escape(str(v["price"]))+' ₽</p>'+
                 ('<p class="item-portion">'+escape(portion)+'</p>' if portion else ''))
     rows = []
     for v in variants:
         label = ' · '.join(x for x in [v.get("volume"), v.get("label")] if x)
-        rows.append('<div class="variant-row"><span>'+escape(label)+'</span><strong>'+
+        strong_class = ' class="reference-price"' if reference_class else ''
+        rows.append('<div class="variant-row"><span>'+escape(label)+'</span><strong'+strong_class+'>'+
                     escape(str(v["price"]))+' ₽</strong></div>')
     return '<div class="variant-list">'+''.join(rows)+'</div>'
 
+def dish_views(entry):
+    if not entry.get("separate_photo_variants"):
+        return [entry]
+    views = []
+    for option in entry["photo_variants"]:
+        label = option["photo_caption"]
+        view = {**entry, **option}
+        for key in ("photo_variants", "separate_photo_variants", "photo_caption"):
+            view.pop(key, None)
+        selected = next(v for v in entry["variants"] if v.get("label") == label)
+        view["variants"] = [{**selected, "label": None}]
+        if label == "С курицей":
+            view["photo_alt"] = view["name"]
+        else:
+            view["id"] = entry["id"]+"-shrimp"
+            view["name"] = option["photo_alt"]
+            view.pop("reference_price_style", None)
+        views.append(view)
+    return views
+
 def card(entry, page, dish=False):
+    if entry.get("separate_photo_variants"):
+        return ''.join(card(view, page, dish) for view in dish_views(entry))
     hit = '<span class="menu-hit">Хит</span>' if entry.get("hit") else ''
     contents = (image(entry, page)+'<div class="item-copy"><div class="item-title"><h3>'+
                 escape(entry["name"])+hit+'</h3></div>'+prices(entry)+'</div>')
@@ -223,7 +247,8 @@ document(bar_page, "Напитки — бар ZÁDU", "Кофе, чай, кок�
          '<main class="bar-layout"><h1>Напитки</h1>'+drink_navigation()+drink_sections(bar_page)+'</main>',
          "menu-page bar-page", (url(MENU, bar_page, True), "← К меню"))
 
-for entry in BREAKFASTS["items"]:
+DISH_VIEWS = [view for entry in BREAKFASTS["items"] for view in dish_views(entry)]
+for entry in DISH_VIEWS:
     dish_page = MENU / "breakfasts" / entry["id"] / "index.html"
     description = escape(entry["description"]) if entry.get("description") else 'Описание уточняется.'
     return_to_card = nav_url(url(MENU / "breakfasts", dish_page, True)+'#'+entry["id"])
@@ -240,5 +265,5 @@ for entry in BREAKFASTS["items"]:
     document(dish_page, entry["name"]+" — ZÁDU", entry.get("description", entry["name"]), details,
              "menu-page dish-page", (return_to_card, "← К завтракам"))
 
-print("Rendered landing, menu,", len(BREAKFASTS["items"]), "dish pages and",
+print("Rendered landing, menu,", len(DISH_VIEWS), "dish pages and",
       sum(len(CATEGORIES[key]["items"]) for key in BAR["categories"]), "drinks in the bar.")

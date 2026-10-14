@@ -868,7 +868,7 @@
         {
           "id": "dish-1",
           "source_number": 1,
-          "name": "Нежный скрембл с курицей и сливочным соусом",
+          "name": "Боул с курицей и скрэмблом",
           "name_status": "provided",
           "hit": false,
           "description": "Нежный скрембл с сочной курицей под бархатным сливочным соусом, дополненный свежим хрустящим салатом.",
@@ -889,13 +889,14 @@
             "basis": null
           },
           "nutrition_status": "provided_by_owner",
-          "photo_alt": "Нежный скрембл с курицей и сливочным соусом",
-          "photo_framing": "center-591x442"
+          "photo_alt": "Боул с курицей и скрэмблом",
+          "photo_framing": "center-591x442",
+          "reference_price_style": true
         },
         {
           "id": "dish-2",
           "source_number": 2,
-          "name": "Сырники с облачным кремом из сгущенки",
+          "name": "Сырники с ягодами и арахисовым соусом",
           "name_status": "provided",
           "hit": false,
           "description": "Нежные румяные сырники с варёной сгущёнкой, взбитой со сливками, и свежими сезонными ягодами.",
@@ -916,13 +917,14 @@
             "basis": null
           },
           "nutrition_status": "provided_by_owner",
-          "photo_alt": "Сырники с облачным кремом из сгущенки",
-          "photo_framing": "center-591x442"
+          "photo_alt": "Сырники с ягодами и арахисовым соусом",
+          "photo_framing": "center-591x442",
+          "reference_price_style": true
         },
         {
           "id": "dish-3",
           "source_number": 3,
-          "name": "Шакшука с томатами и пряностями",
+          "name": "Шакшука со страчателлой",
           "name_status": "provided",
           "hit": false,
           "description": "Ароматная шакшука с яйцами, приготовленная в насыщенном томатном соусе с пряностями, подаётся с хрустящим хлебом тартин.",
@@ -937,13 +939,14 @@
           "ingredients": null,
           "nutrition": null,
           "nutrition_status": "not_provided",
-          "photo_alt": "Шакшука с томатами и пряностями",
-          "photo_framing": "center-591x442"
+          "photo_alt": "Шакшука со страчателлой",
+          "photo_framing": "center-591x442",
+          "reference_price_style": true
         },
         {
           "id": "dish-4",
           "source_number": 4,
-          "name": "Завтрак с характером: Дагестан",
+          "name": "Деревенский завтрак",
           "name_status": "provided",
           "hit": false,
           "description": "Традиционный сытный завтрак с домашними пышками, картофелем с сушёной домашней колбасой. Душистый калмыцкий чай завершает эту гастрономическую композицию.",
@@ -964,8 +967,9 @@
             "basis": null
           },
           "nutrition_status": "provided_by_owner",
-          "photo_alt": "Завтрак с характером: Дагестан",
-          "photo_framing": "center-591x442"
+          "photo_alt": "Деревенский завтрак",
+          "photo_framing": "center-591x442",
+          "reference_price_style": true
         },
         {
           "id": "dish-5",
@@ -997,7 +1001,7 @@
         {
           "id": "dish-8",
           "source_number": 8,
-          "name": "Баварское утро",
+          "name": "Английский завтрак",
           "name_status": "provided",
           "hit": false,
           "description": "Сытный баварский завтрак с глазуньей, ароматными колбасками, картофелем с грибами в нежном сливочном соусе и свежим овощным салатом.",
@@ -1018,8 +1022,9 @@
             "basis": null
           },
           "nutrition_status": "provided_by_owner",
-          "photo_alt": "Баварское утро",
-          "photo_framing": "center-591x442"
+          "photo_alt": "Английский завтрак",
+          "photo_framing": "center-591x442",
+          "reference_price_style": true
         },
         {
           "id": "dish-6",
@@ -1076,7 +1081,7 @@
         {
           "id": "dish-7",
           "source_number": 7,
-          "name": "Хрустящий боул с курицей / креветками",
+          "name": "Поке с курицей",
           "name_status": "provided",
           "hit": false,
           "description": "Сытный боул с рисом, сочной курицей/хрустящими креветками и свежими овощами, дополненный нежным ореховым соусом.",
@@ -1097,12 +1102,12 @@
           "ingredients": null,
           "nutrition": null,
           "nutrition_status": "not_provided",
-          "photo_alt": "Хрустящий боул с курицей",
+          "photo_alt": "Поке с курицей",
           "photo_framing": "center-591x442",
           "photo_variants": [
             {
               "photo": "assets/dishes/bowl-chicken-20261014.png",
-              "photo_alt": "Хрустящий боул с курицей",
+              "photo_alt": "Поке с курицей",
               "photo_caption": "С курицей",
               "photo_framing": "center-591x442"
             },
@@ -1112,7 +1117,9 @@
               "photo_caption": "С креветками",
               "photo_framing": "center-591x442"
             }
-          ]
+          ],
+          "reference_price_style": true,
+          "separate_photo_variants": true
         }
       ]
     },
