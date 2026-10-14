@@ -50,7 +50,8 @@ h1{margin:0 0 28px;font-size:46px;line-height:1.15;letter-spacing:-.025em;overfl
 .menu-item{min-width:0;background:transparent;scroll-margin-top:24px}
 .item-photo{position:relative;width:100%;aspect-ratio:1.15;overflow:hidden;background:var(--photo)}
 .item-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
-.original-dish-photo{aspect-ratio:591/442;background:transparent}
+.original-dish-photo{aspect-ratio:auto;background:transparent}
+.original-dish-photo::before{content:"";display:block;padding-top:74.788494%}
 .original-dish-photo img{position:absolute;inset:0}
 .dish-photo-figure{margin:0;min-width:0}
 .dish-photo-caption{margin-top:7px;color:var(--muted);font-size:12px;line-height:1.4;text-align:center}

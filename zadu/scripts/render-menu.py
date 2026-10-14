@@ -3,12 +3,13 @@ from html import escape
 import json
 import os
 from pathlib import Path
+import struct
 
 ROOT = Path(__file__).resolve().parents[1]
 INTERIOR = ROOT / "interior"
 MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
-VERSION = "20261014-final-dish-names"
+VERSION = "20261014-photo-loading-fix"
 LANDING_STYLE_VERSION = "20261014-transparent-home-buttons"
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
@@ -34,10 +35,19 @@ def image(entry, page, extra_class=""):
         # The supplied screenshots contain a centred photograph. Clip only the
         # phone's black margins in the layout; retain the original photo pixels.
         framing = ' original-dish-photo' if entry.get("photo_framing") == "center-591x442" else ''
+        source = ROOT / entry["photo"]
+        dimensions = ''
+        if source.suffix.lower() == ".png":
+            with source.open("rb") as supplied_photo:
+                header = supplied_photo.read(24)
+            if header[:8] == b'\x89PNG\r\n\x1a\n' and len(header) == 24:
+                width, height = struct.unpack(">II", header[16:24])
+                dimensions = f' width="{width}" height="{height}"'
+        loading = "eager" if framing or extra_class == "dish-photo" else "lazy"
         photo = ('<div class="item-photo'+framing+' '+extra_class+'"><img src="'+
-                escape(url(ROOT / entry["photo"], page), quote=True)+'" alt="'+
+                escape(url(source, page)+"?v="+VERSION, quote=True)+'" alt="'+
                 escape(entry.get("photo_alt") or entry["name"], quote=True)+
-                '" loading="lazy" decoding="async"></div>')
+                '"'+dimensions+' loading="'+loading+'" decoding="async"></div>')
         if entry.get("photo_caption"):
             return ('<figure class="dish-photo-figure">'+photo+'<figcaption class="dish-photo-caption">'+
                     escape(entry["photo_caption"])+ '</figcaption></figure>')
