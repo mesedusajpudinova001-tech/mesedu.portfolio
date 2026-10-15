@@ -1016,7 +1016,7 @@
               "price": 550
             }
           ],
-          "photo": "assets/dishes/bavarian-breakfast-20261014.png",
+          "photo": "assets/dishes/bavarian-breakfast-transparent-20261015.webp",
           "ingredients": null,
           "nutrition": {
             "calories": "~900–930",
@@ -1027,8 +1027,10 @@
           },
           "nutrition_status": "provided_by_owner",
           "photo_alt": "Баварское утро",
-          "photo_framing": "center-591x442",
-          "reference_price_style": true
+          "photo_framing": "transparent-cutout",
+          "reference_price_style": true,
+          "photo_width": 1433,
+          "photo_height": 1098
         },
         {
           "id": "dish-6",
@@ -1105,7 +1107,7 @@
               "price": 650
             }
           ],
-          "photo": "assets/dishes/bowl-chicken-20261014.png",
+          "photo": "assets/dishes/bowl-chicken-transparent-20261015.webp",
           "ingredients": null,
           "nutrition": null,
           "nutrition_status": "provided_by_owner",
@@ -1134,25 +1136,31 @@
             }
           ],
           "photo_alt": "Хрустящий боул с курицей",
-          "photo_framing": "center-591x442",
+          "photo_framing": "transparent-cutout",
           "photo_variants": [
             {
               "name": "Хрустящий боул с курицей",
-              "photo": "assets/dishes/bowl-chicken-20261014.png",
+              "photo": "assets/dishes/bowl-chicken-transparent-20261015.webp",
               "photo_alt": "Хрустящий боул с курицей",
               "photo_caption": "С курицей",
-              "photo_framing": "center-591x442"
+              "photo_framing": "transparent-cutout",
+              "photo_width": 1433,
+              "photo_height": 1098
             },
             {
               "name": "Хрустящий боул с креветками",
-              "photo": "assets/dishes/bowl-shrimp-20261014.png",
+              "photo": "assets/dishes/bowl-shrimp-transparent-20261015.webp",
               "photo_alt": "Хрустящий боул с креветками",
               "photo_caption": "С креветками",
-              "photo_framing": "center-591x442"
+              "photo_framing": "transparent-cutout",
+              "photo_width": 1433,
+              "photo_height": 1098
             }
           ],
           "reference_price_style": true,
-          "separate_photo_variants": true
+          "separate_photo_variants": true,
+          "photo_width": 1433,
+          "photo_height": 1098
         }
       ]
     },
