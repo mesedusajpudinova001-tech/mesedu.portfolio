@@ -10,7 +10,7 @@ INTERIOR = ROOT / "interior"
 MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
 VERSION = "20261014-photo-loading-fix"
-LANDING_STYLE_VERSION = "20261015-whatsapp-contact"
+LANDING_STYLE_VERSION = "20261015-cafe-hours"
 BREAKFAST_HOURS_NOTE = '<p class="breakfast-hours">Завтраки до 20:00</p>'
 PLATE_SHADOW_PREVIEW_IDS = {"dish-1", "dish-2", "dish-3", "dish-4", "dish-5", "dish-8", "dish-6", "dish-7", "dish-7-shrimp"}
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
@@ -153,11 +153,12 @@ def drink_navigation():
             '</nav>')
 
 def footer(landing=False):
+    hours = '<p class="cafe-hours">Время работы: 08:00–00:00</p>' if landing else ''
     allergy = '' if landing else '<p class="allergy-note">'+escape(DATA["allergy_note"])+'</p>'
     return ('<footer class="page-footer '+('landing-footer' if landing else 'menu-footer')+'">'+
             allergy+'<div class="contact-block"><a class="location-link" href="'+
             escape(DATA["location"]["url"], quote=True)+'" target="_blank" rel="noopener noreferrer">'+
-            escape(DATA["location"]["address"])+'</a><a class="contact-phone" data-site-phone hidden>'
+            escape(DATA["location"]["address"])+'</a>'+hours+'<a class="contact-phone" data-site-phone hidden>'
             '</a></div></footer>')
 
 def whatsapp_contact():

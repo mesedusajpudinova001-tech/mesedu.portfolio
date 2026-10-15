@@ -29,6 +29,7 @@ a:focus-visible{outline:2px solid var(--olive);outline-offset:5px}
 .location-link,.contact-phone{display:flex;justify-content:center;align-items:center;min-height:44px;max-width:100%;text-align:center;overflow-wrap:anywhere}
 .location-link{color:var(--muted);font-size:14px}
 .landing-footer .location-link{color:var(--olive);font-size:16px}
+.cafe-hours{margin:0;color:var(--price);font-size:14px;font-weight:400;line-height:1.5;text-align:center}
 .contact-phone{font-size:17px;color:var(--olive)}
 .landing-page .landing-footer{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
 .whatsapp-float{--whatsapp-tone:#bb9d77;position:fixed;z-index:20;right:22px;bottom:calc(20px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:22px;max-width:calc(100% - 32px);color:#fff;transition:filter .15s ease}
