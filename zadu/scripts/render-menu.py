@@ -11,7 +11,7 @@ MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
 VERSION = "20261014-photo-loading-fix"
 LANDING_STYLE_VERSION = "20261015-whatsapp-contact"
-PLATE_SHADOW_PREVIEW_IDS = {"dish-1", "dish-2", "dish-3"}
+PLATE_SHADOW_PREVIEW_IDS = {"dish-1", "dish-2", "dish-3", "dish-4", "dish-5", "dish-8"}
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
 BREAKFASTS = CATEGORIES["breakfasts"]
