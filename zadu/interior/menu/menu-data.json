@@ -879,7 +879,7 @@
               "price": 500
             }
           ],
-          "photo": "assets/dishes/scramble-chicken-20261014.png",
+          "photo": "assets/dishes/scramble-chicken-transparent-20261015.webp",
           "ingredients": null,
           "nutrition": {
             "calories": "690–740",
@@ -890,8 +890,10 @@
           },
           "nutrition_status": "provided_by_owner",
           "photo_alt": "Нежный скрембл с курицей и сливочным соусом",
-          "photo_framing": "center-591x442",
-          "reference_price_style": true
+          "photo_framing": "transparent-cutout",
+          "reference_price_style": true,
+          "photo_width": 1433,
+          "photo_height": 1098
         },
         {
           "id": "dish-2",
@@ -935,13 +937,15 @@
               "price": 350
             }
           ],
-          "photo": "assets/dishes/shakshuka-20261014.png",
+          "photo": "assets/dishes/shakshuka-transparent-20261015.webp",
           "ingredients": null,
           "nutrition": null,
           "nutrition_status": "not_provided",
           "photo_alt": "Шакшука с томатами и пряностями",
-          "photo_framing": "center-591x442",
-          "reference_price_style": true
+          "photo_framing": "transparent-cutout",
+          "reference_price_style": true,
+          "photo_width": 1433,
+          "photo_height": 1098
         },
         {
           "id": "dish-4",
@@ -1046,7 +1050,7 @@
               "price": 500
             }
           ],
-          "photo": "assets/dishes/udon-chicken-20261014.png",
+          "photo": "assets/dishes/udon-chicken-transparent-20261015.webp",
           "ingredients": null,
           "nutrition": null,
           "nutrition_status": "provided_by_owner",
@@ -1075,9 +1079,11 @@
             }
           ],
           "photo_alt": "Удон в азиатском стиле с курицей",
-          "photo_framing": "center-591x442",
+          "photo_framing": "transparent-cutout",
           "photo_caption": "На фото — с курицей",
-          "compact_variant_prices": true
+          "compact_variant_prices": true,
+          "photo_width": 1433,
+          "photo_height": 1098
         },
         {
           "id": "dish-7",

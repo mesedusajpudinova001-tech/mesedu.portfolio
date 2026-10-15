@@ -35,9 +35,13 @@ def image(entry, page, extra_class=""):
         # The supplied screenshots contain a centred photograph. Clip only the
         # phone's black margins in the layout; retain the original photo pixels.
         framing = ' original-dish-photo' if entry.get("photo_framing") == "center-591x442" else ''
+        if entry.get("photo_framing") == "transparent-cutout":
+            framing = ' cutout-dish-photo'
         source = ROOT / entry["photo"]
         dimensions = ''
-        if source.suffix.lower() == ".png":
+        if entry.get("photo_width") and entry.get("photo_height"):
+            dimensions = f' width="{int(entry["photo_width"])}" height="{int(entry["photo_height"])}"'
+        elif source.suffix.lower() == ".png":
             with source.open("rb") as supplied_photo:
                 header = supplied_photo.read(24)
             if header[:8] == b'\x89PNG\r\n\x1a\n' and len(header) == 24:
@@ -154,6 +158,8 @@ def footer(landing=False):
 def document(page, title, description, content, body_class, back=None):
     back_link = '' if not back else '<a class="back-home" href="'+nav_url(back[0])+'">'+escape(back[1])+'</a>'
     landing = body_class == "landing-page"
+    style_version = (LANDING_STYLE_VERSION if landing else
+                     "20261015-transparent-dishes" if "cutout-dish-photo" in content else VERSION)
     header_class = "landing-header" if landing else "menu-header"
     logo = url(ROOT / DATA.get("branding", {}).get("logo", "assets/logo.svg"), page)
     compat = '<script src="menu.js?v='+VERSION+'"></script>' if page == MENU / "index.html" else ''
@@ -167,7 +173,7 @@ def document(page, title, description, content, body_class, back=None):
         '  <link rel="icon" type="image/svg+xml" href="'+url(ROOT / "assets/favicon.svg", page)+'">\n'
         '  <link rel="preload" href="'+url(ROOT / "assets/fonts/montserrat-brand-600.woff", page)+'" as="font" type="font/woff" crossorigin>\n'
         '  <link rel="stylesheet" href="'+url(INTERIOR / "interior.css", page)+'?v='+
-        (LANDING_STYLE_VERSION if landing else VERSION)+'">\n'
+        style_version+'">\n'
         '</head>\n<body class="'+body_class+'">\n'
         '  <header class="site-header '+header_class+'"><a class="brand-logo" href="'+
         nav_url(url(INTERIOR, page, True))+'" aria-label="ZÁDU — главная"><img data-brand-logo src="'+logo+

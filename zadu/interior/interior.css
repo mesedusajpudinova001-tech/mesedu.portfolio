@@ -53,6 +53,8 @@ h1{margin:0 0 28px;font-size:46px;line-height:1.15;letter-spacing:-.025em;overfl
 .original-dish-photo{aspect-ratio:auto;background:transparent}
 .original-dish-photo::before{content:"";display:block;padding-top:74.788494%}
 .original-dish-photo img{position:absolute;inset:0}
+.cutout-dish-photo{aspect-ratio:591/442;background:transparent}
+.cutout-dish-photo img{position:absolute;inset:0;object-fit:contain}
 .dish-photo-figure{margin:0;min-width:0}
 .dish-photo-caption{margin-top:7px;color:var(--muted);font-size:12px;line-height:1.4;text-align:center}
 .dish-photo-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
