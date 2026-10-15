@@ -11,6 +11,7 @@ MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
 VERSION = "20261014-photo-loading-fix"
 LANDING_STYLE_VERSION = "20261015-whatsapp-contact"
+BREAKFAST_HOURS_NOTE = '<p class="breakfast-hours">Завтраки до 20:00</p>'
 PLATE_SHADOW_PREVIEW_IDS = {"dish-1", "dish-2", "dish-3", "dish-4", "dish-5", "dish-8", "dish-6", "dish-7", "dish-7-shrimp"}
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
@@ -131,6 +132,8 @@ def category_section(category, page, heading_level=2, dish=False):
     heading_id = "heading-"+category_id
     heading = 'h'+str(heading_level)
     note = '<p class="category-note">'+escape(category["note"])+'</p>' if category.get("note") else ''
+    if category_id == "breakfasts":
+        note = BREAKFAST_HOURS_NOTE + note
     items = ''.join(card(entry, page, dish) for entry in category["items"])
     if items:
         content = '<div class="item-grid">'+items+'</div>'
@@ -175,6 +178,7 @@ def document(page, title, description, content, body_class, back=None):
     back_link = '' if not back else '<a class="back-home" href="'+nav_url(back[0])+'">'+escape(back[1])+'</a>'
     landing = body_class == "landing-page"
     style_version = (LANDING_STYLE_VERSION if landing else
+                     "20261015-breakfast-hours" if 'class="breakfast-hours"' in content else
                      "20261015-plate-shadow-preview" if "cutout-dish-photo" in content else VERSION)
     header_class = "landing-header" if landing else "menu-header"
     logo = url(ROOT / DATA.get("branding", {}).get("logo", "assets/logo.svg"), page)
@@ -272,7 +276,7 @@ document(menu_page, "Меню — ZÁDU", "Завтраки, десерты и �
          (url(INTERIOR, menu_page, True), "← На главную"))
 
 breakfast_page = MENU / "breakfasts/index.html"
-breakfast_content = ('<main class="breakfast-layout" id="breakfasts"><h1>Завтраки</h1><div class="item-grid">'+
+breakfast_content = ('<main class="breakfast-layout" id="breakfasts"><h1>Завтраки</h1>'+BREAKFAST_HOURS_NOTE+'<div class="item-grid">'+
                      ''.join(card(e, breakfast_page, True) for e in BREAKFASTS["items"])+'</div></main>')
 document(breakfast_page, "Завтраки — ZÁDU", "Завтраки ZÁDU. Выберите блюдо, чтобы посмотреть подробности.",
          breakfast_content, "menu-page breakfast-page", (url(MENU, breakfast_page, True), "← К меню"))
