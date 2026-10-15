@@ -10,7 +10,7 @@ INTERIOR = ROOT / "interior"
 MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
 VERSION = "20261014-photo-loading-fix"
-LANDING_STYLE_VERSION = "20261014-transparent-home-buttons"
+LANDING_STYLE_VERSION = "20261015-whatsapp-contact"
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
 BREAKFASTS = CATEGORIES["breakfasts"]
@@ -155,6 +155,20 @@ def footer(landing=False):
             escape(DATA["location"]["address"])+'</a><a class="contact-phone" data-site-phone hidden>'
             '</a></div></footer>')
 
+def whatsapp_contact():
+    number = DATA.get("location", {}).get("whatsapp", "")
+    if not (isinstance(number, str) and number.isascii() and number.isdigit()
+            and 7 <= len(number) <= 15):
+        return ''
+    return (
+        '<a class="whatsapp-float" href="https://wa.me/'+number+'" target="_blank"'
+        ' rel="noopener noreferrer" aria-label="Связаться с ZÁDU в WhatsApp, откроется новая вкладка">'
+        '<span class="whatsapp-float-label">Связаться в Whatsapp</span>'
+        '<span class="whatsapp-float-icon" aria-hidden="true">'
+        '<svg viewBox="0 0 48 48" focusable="false">'
+        '<path d="M40 23a17 17 0 0 1-25 15l-8 3 2.7-8.5A17 17 0 1 1 40 23Z"/>'
+        '<path d="M15 18h16M15 22h16M15 26h12"/></svg></span></a>')
+
 def document(page, title, description, content, body_class, back=None):
     back_link = '' if not back else '<a class="back-home" href="'+nav_url(back[0])+'">'+escape(back[1])+'</a>'
     landing = body_class == "landing-page"
@@ -179,6 +193,7 @@ def document(page, title, description, content, body_class, back=None):
         nav_url(url(INTERIOR, page, True))+'" aria-label="ZÁDU — главная"><img data-brand-logo src="'+logo+
         '" width="64" height="60" alt="Фирменный знак кофейни ZÁDU" decoding="async"><span class="brand-name">ZÁDU</span></a>'+
         back_link+'</header>\n  '+content+'\n  '+footer(landing)+
+        ('\n  '+whatsapp_contact() if landing else '')+
         '\n  <script src="'+url(INTERIOR / "site.js", page)+'?v='+VERSION+'"></script>\n  '+
         compat+'\n</body>\n</html>\n')
     page.parent.mkdir(parents=True, exist_ok=True)

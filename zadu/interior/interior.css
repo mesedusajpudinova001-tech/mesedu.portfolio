@@ -30,6 +30,14 @@ a:focus-visible{outline:2px solid var(--olive);outline-offset:5px}
 .location-link{color:var(--muted);font-size:14px}
 .landing-footer .location-link{color:var(--olive);font-size:16px}
 .contact-phone{font-size:17px;color:var(--olive)}
+.landing-page .landing-footer{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+.whatsapp-float{--whatsapp-tone:#bb9d77;position:fixed;z-index:20;right:22px;bottom:calc(20px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:22px;max-width:calc(100% - 32px);color:#fff;transition:filter .15s ease}
+.whatsapp-float:hover{filter:brightness(.96)}
+.whatsapp-float:focus-visible{outline:2px solid var(--olive);outline-offset:6px;border-radius:4px}
+.whatsapp-float-label{position:relative;display:block;padding:12px 14px;border-radius:2px;background:var(--whatsapp-tone);font-size:14px;font-weight:600;line-height:1.2;white-space:nowrap}
+.whatsapp-float-label::after{content:"";position:absolute;left:100%;top:50%;transform:translateY(-50%);border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:10px solid var(--whatsapp-tone)}
+.whatsapp-float-icon{display:grid;place-items:center;width:64px;height:64px;flex:0 0 64px;border-radius:50%;background:var(--whatsapp-tone);box-shadow:0 4px 24px rgba(0,0,0,.22)}
+.whatsapp-float-icon svg{display:block;width:46px;height:46px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .menu-footer{border-top:1px solid var(--line)}
 .allergy-note{max-width:620px;margin:0 auto 16px;font-size:13px;color:var(--muted)}
 .menu-layout,.breakfast-layout,.dessert-layout,.bar-layout,.dish-layout{width:min(1080px,calc(100% - 64px));margin:18px auto 0}
@@ -102,6 +110,10 @@ h1{margin:0 0 28px;font-size:46px;line-height:1.15;letter-spacing:-.025em;overfl
  .page-footer{width:calc(100% - 36px);margin-top:36px;padding-top:24px}
  .landing-footer{margin-top:0}
  .landing-footer .location-link{font-size:15px}
+ .whatsapp-float{right:10px;bottom:calc(18px + env(safe-area-inset-bottom));gap:18px}
+ .whatsapp-float-label{padding:8px 12px;font-size:13px}
+ .whatsapp-float-icon{width:56px;height:56px;flex-basis:56px}
+ .whatsapp-float-icon svg{width:40px;height:40px}
  .menu-layout,.breakfast-layout,.dessert-layout,.bar-layout,.dish-layout{width:calc(100% - 36px);margin-top:16px}
  h1{font-size:36px;margin-bottom:24px}
  .menu-group-list{width:min(320px,100%);gap:11px}
@@ -129,6 +141,10 @@ h1{margin:0 0 28px;font-size:46px;line-height:1.15;letter-spacing:-.025em;overfl
  .nutrition-grid dd{font-size:15px}
 }
 @media(max-width:350px){
+ .whatsapp-float{gap:14px}
+ .whatsapp-float-label{padding:10px;font-size:12px}
+ .whatsapp-float-icon{width:52px;height:52px;flex-basis:52px}
+ .whatsapp-float-icon svg{width:38px;height:38px}
  .brand-logo{width:135px;min-height:110px}
  .brand-name{font-size:34px}
  .back-home{max-width:calc((100% - 135px)/2 - 8px);font-size:11px}
