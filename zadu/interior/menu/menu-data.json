@@ -909,7 +909,7 @@
               "price": 500
             }
           ],
-          "photo": "assets/dishes/syrniki-condensed-cream-20261014.png",
+          "photo": "assets/dishes/syrniki-condensed-cream-transparent-20261015.webp",
           "ingredients": null,
           "nutrition": {
             "calories": "~620–680",
@@ -920,8 +920,10 @@
           },
           "nutrition_status": "provided_by_owner",
           "photo_alt": "Сырники с облачным кремом из сгущенки",
-          "photo_framing": "center-591x442",
-          "reference_price_style": true
+          "photo_framing": "transparent-cutout",
+          "reference_price_style": true,
+          "photo_width": 1433,
+          "photo_height": 1098
         },
         {
           "id": "dish-3",
@@ -961,7 +963,7 @@
               "price": 550
             }
           ],
-          "photo": "assets/dishes/dagestan-breakfast-20261014.png",
+          "photo": "assets/dishes/dagestan-breakfast-transparent-20261015.webp",
           "ingredients": null,
           "nutrition": {
             "calories": "855–900",
@@ -972,8 +974,10 @@
           },
           "nutrition_status": "provided_by_owner",
           "photo_alt": "Завтрак с характером: Дагестан",
-          "photo_framing": "center-591x442",
-          "reference_price_style": true
+          "photo_framing": "transparent-cutout",
+          "reference_price_style": true,
+          "photo_width": 1433,
+          "photo_height": 1098
         },
         {
           "id": "dish-5",
@@ -989,7 +993,7 @@
               "price": 650
             }
           ],
-          "photo": "assets/dishes/belgian-waffle-cheddar-20261014.png",
+          "photo": "assets/dishes/belgian-waffle-cheddar-transparent-20261015.webp",
           "ingredients": null,
           "nutrition": {
             "calories": "~1080–1135",
@@ -1000,7 +1004,9 @@
           },
           "nutrition_status": "provided_by_owner",
           "photo_alt": "Хрустящая бельгийская вафля под сыром Чеддер",
-          "photo_framing": "center-591x442"
+          "photo_framing": "transparent-cutout",
+          "photo_width": 1433,
+          "photo_height": 1098
         },
         {
           "id": "dish-8",
