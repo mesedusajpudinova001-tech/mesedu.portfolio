@@ -234,7 +234,7 @@ landing_content = (
     'M12 62v26M12 75h14M84 62v26M70 75h14" stroke="currentColor" stroke-width="1.5"'
     ' stroke-linecap="round"/></svg><span>Место для фото интерьера</span></div>'
     '<nav class="interior-actions" aria-label="Меню и отзыв о кофейне">'
-    '<a class="interior-action" href="menu/?v='+VERSION+'">Посмотреть меню</a>'
+    '<a class="interior-action" href="menu/?v='+VERSION+'">Меню</a>'
     '<a class="interior-action" href="https://2gis.ru/makhachkala/firm/70000001098754589/tab/reviews"'
     ' target="_blank" rel="noopener noreferrer"'
     ' aria-label="Отзыв о ZÁDU в 2ГИС, откроется новая вкладка">Отзыв</a></nav></div></main>')
