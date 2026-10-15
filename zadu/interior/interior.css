@@ -63,6 +63,8 @@ h1{margin:0 0 28px;font-size:46px;line-height:1.15;letter-spacing:-.025em;overfl
 .original-dish-photo img{position:absolute;inset:0}
 .cutout-dish-photo{aspect-ratio:591/442;background:transparent}
 .cutout-dish-photo img{position:absolute;inset:0;object-fit:contain}
+/* Preview: grounded plate shadows for the first three breakfasts only. */
+.plate-shadow-preview{filter:drop-shadow(0 2px 1px rgba(40,32,23,.20)) drop-shadow(2px 8px 5px rgba(40,32,23,.24))}
 .dish-photo-figure{margin:0;min-width:0}
 .dish-photo-caption{margin-top:7px;color:var(--muted);font-size:12px;line-height:1.4;text-align:center}
 .dish-photo-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}

@@ -11,6 +11,7 @@ MENU = INTERIOR / "menu"
 DATA = json.loads((MENU / "menu-data.json").read_text())
 VERSION = "20261014-photo-loading-fix"
 LANDING_STYLE_VERSION = "20261015-whatsapp-contact"
+PLATE_SHADOW_PREVIEW_IDS = {"dish-1", "dish-2", "dish-3"}
 CATEGORIES = {c["id"]: c for c in DATA["categories"]}
 BAR = next(g for g in DATA["groups"] if g["id"] == "bar")
 BREAKFASTS = CATEGORIES["breakfasts"]
@@ -37,6 +38,7 @@ def image(entry, page, extra_class=""):
         framing = ' original-dish-photo' if entry.get("photo_framing") == "center-591x442" else ''
         if entry.get("photo_framing") == "transparent-cutout":
             framing = ' cutout-dish-photo'
+        shadow = ' plate-shadow-preview' if entry.get("id") in PLATE_SHADOW_PREVIEW_IDS else ''
         source = ROOT / entry["photo"]
         dimensions = ''
         if entry.get("photo_width") and entry.get("photo_height"):
@@ -48,7 +50,7 @@ def image(entry, page, extra_class=""):
                 width, height = struct.unpack(">II", header[16:24])
                 dimensions = f' width="{width}" height="{height}"'
         loading = "eager" if framing or extra_class == "dish-photo" else "lazy"
-        photo = ('<div class="item-photo'+framing+' '+extra_class+'"><img src="'+
+        photo = ('<div class="item-photo'+framing+shadow+' '+extra_class+'"><img src="'+
                 escape(url(source, page)+"?v="+VERSION, quote=True)+'" alt="'+
                 escape(entry.get("photo_alt") or entry["name"], quote=True)+
                 '"'+dimensions+' loading="'+loading+'" decoding="async"></div>')
@@ -173,7 +175,7 @@ def document(page, title, description, content, body_class, back=None):
     back_link = '' if not back else '<a class="back-home" href="'+nav_url(back[0])+'">'+escape(back[1])+'</a>'
     landing = body_class == "landing-page"
     style_version = (LANDING_STYLE_VERSION if landing else
-                     "20261015-transparent-dishes" if "cutout-dish-photo" in content else VERSION)
+                     "20261015-plate-shadow-preview" if "cutout-dish-photo" in content else VERSION)
     header_class = "landing-header" if landing else "menu-header"
     logo = url(ROOT / DATA.get("branding", {}).get("logo", "assets/logo.svg"), page)
     compat = '<script src="menu.js?v='+VERSION+'"></script>' if page == MENU / "index.html" else ''
