@@ -114,15 +114,14 @@ h1, h2, h3 { font-family: "PT Serif", Georgia, serif; font-weight: 400; line-hei
 .site-footer a:hover { color: var(--wine); text-decoration: underline; text-underline-offset: .25em; }
 
 .hero {
-  min-height: min(690px, calc(100svh - 5rem));
-  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(350px, .92fr);
-  align-items: center; gap: clamp(2.5rem, 5vw, 6rem);
-  padding: 4rem 0 5rem;
+  min-height: clamp(480px, 62svh, 620px);
+  display: flex; align-items: center;
+  padding: 4rem 0 4.5rem;
 }
 .hero-content {
-  max-width: 690px;
+  max-width: 850px;
   margin-left: -2rem;
-  padding: 2.5rem 3rem 2.5rem 2rem;
+  padding: 2.8rem 4rem 2.8rem 2rem;
   background: linear-gradient(90deg, rgba(250, 248, 243, .96) 0%, rgba(250, 248, 243, .88) 72%, rgba(250, 248, 243, .36) 100%);
 }
 .eyebrow {
@@ -132,9 +131,8 @@ h1, h2, h3 { font-family: "PT Serif", Georgia, serif; font-weight: 400; line-hei
 }
 .eyebrow-line { display: inline-block; width: 1.8rem; border-top: 1px solid currentColor; vertical-align: middle; margin: 0 .7rem .2rem 0; }
 .hero .eyebrow { color: var(--wine); margin-bottom: 1.4rem; }
-.hero h1 { color: var(--graphite); font-size: clamp(3.15rem, 4.25vw, 4.6rem); letter-spacing: -.04em; margin-bottom: 1.6rem; }
-.hero-question { font-size: 1.18rem; font-weight: 700; color: var(--graphite); margin-bottom: .7rem; }
-.hero-copy { color: var(--muted); font-size: 1.08rem; line-height: 1.56; max-width: 33rem; margin-bottom: 2.1rem; }
+.hero h1 { color: var(--graphite); font-size: clamp(3.15rem, 4.25vw, 4.6rem); letter-spacing: -.04em; margin-bottom: 1.35rem; }
+.hero-copy { color: var(--muted); font-size: 1.13rem; line-height: 1.56; max-width: 39rem; margin-bottom: 1.9rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
 .button {
   min-height: 3.25rem; display: inline-flex; justify-content: center; align-items: center;
@@ -208,9 +206,13 @@ h1, h2, h3 { font-family: "PT Serif", Georgia, serif; font-weight: 400; line-hei
 .about-text p { font-size: 1.08rem; line-height: 1.6; margin-bottom: 1.15rem; }
 .about-text p:last-child { color: var(--wine); font-weight: 700; border-left: 3px solid var(--wine); padding-left: 1rem; margin: 1.6rem 0 0; }
 
-.work-section { padding-top: 8rem; }
+.work-section { padding-top: 5rem; }
+.services-section { padding-top: 8rem; }
 .portfolio-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.35rem; }
 .portfolio-card { display: flex; flex-direction: column; min-width: 0; padding: 1.2rem; }
+.featured-project { grid-column: 1 / -1; }
+.featured-project .poster-preview { height: auto; aspect-ratio: 16 / 9; }
+.zadu-image { object-fit: cover; object-position: center 48%; }
 .portfolio-top { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; padding: .6rem .65rem 1.1rem; }
 .portfolio-category { text-align: right; text-transform: uppercase; font-size: .8rem; letter-spacing: .06em; color: var(--muted); font-weight: 700; }
 .poster-preview, .comparison-pair { height: clamp(300px, 29vw, 410px); }
@@ -263,7 +265,7 @@ h1, h2, h3 { font-family: "PT Serif", Georgia, serif; font-weight: 400; line-hei
 
 @media (max-width: 1020px) {
   .page-shell { width: min(100% - 2.5rem, 1420px); }
-  .hero { min-height: auto; grid-template-columns: 1fr; gap: 3rem; padding: 4rem 0 5rem; }
+  .hero { min-height: 520px; padding: 4rem 0; }
   .hero-content { max-width: 760px; }
   .about-section { grid-template-columns: 1fr; gap: 1rem; }
   .about-text { padding-top: 0; }
@@ -276,18 +278,19 @@ h1, h2, h3 { font-family: "PT Serif", Georgia, serif; font-weight: 400; line-hei
 @media (max-width: 700px) {
   .site-background { background-position: 69% center; }
   .page-shell { width: min(100% - 1.5rem, 1420px); }
-  .site-header { align-items: flex-start; flex-direction: column; padding: 1rem 0; gap: .65rem; }
-  .site-nav { width: 100%; justify-content: space-between; gap: .3rem .7rem; padding: .38rem 0; }
-  .site-nav a { font-size: .8rem; }
-  .hero { gap: 2.5rem; padding: 2.5rem 0 3.7rem; }
-  .hero-content { margin-left: -.75rem; padding: 1.5rem 1.2rem 1.5rem .75rem; background: rgba(250, 248, 243, .90); }
+  .site-header { align-items: center; flex-direction: row; padding: .85rem 0; gap: .75rem; }
+  .site-nav { width: auto; justify-content: flex-end; gap: .35rem .9rem; padding: 0; }
+  .site-nav a { display: none; font-size: .82rem; }
+  .site-nav a.nav-primary { display: block; }
+  .hero { min-height: 430px; padding: 2.7rem 0 3rem; }
+  .hero-content { margin-left: -.75rem; padding: 1.65rem 1.2rem 1.65rem .75rem; background: rgba(250, 248, 243, .92); }
   .hero .eyebrow { margin-bottom: 1rem; }
   .hero h1 { font-size: clamp(2.45rem, 9.8vw, 3.4rem); margin-bottom: 1.2rem; }
-  .hero-question { font-size: 1.07rem; }
   .hero-copy { font-size: 1rem; margin-bottom: 1.45rem; }
   .browser-toolbar { min-height: 2.2rem; }
   .browser-footer { font-size: .78rem; padding: .7rem .75rem; }
-  .section-block, .work-section, .process-section { padding-top: 4rem; }
+  .section-block, .services-section, .process-section { padding-top: 4rem; }
+  .work-section { padding-top: 3.5rem; }
   .section-heading h2, .about-heading h2, .process-intro h2, .contact-panel h2 { font-size: clamp(2.1rem, 8vw, 3rem); }
   .about-section { margin-top: 3rem; padding-top: 3rem; }
   .about-text p { font-size: 1rem; }
@@ -297,6 +300,7 @@ h1, h2, h3 { font-family: "PT Serif", Georgia, serif; font-weight: 400; line-hei
   .card-audience { margin-top: 2rem; }
   .portfolio-card { padding: .8rem; }
   .poster-preview { height: auto; aspect-ratio: 1200 / 750; }
+  .featured-project .poster-preview { aspect-ratio: 4 / 5; }
   .comparison-pair { height: clamp(245px, 76vw, 370px); }
   .process-wrap { display: block; padding: 2rem 1.5rem; }
   .steps { margin-top: 2rem; }
@@ -326,10 +330,10 @@ h1, h2, h3 { font-family: "PT Serif", Georgia, serif; font-weight: 400; line-hei
         <header class="site-header">
           <a class="wordmark" href="#top" aria-label="Меседу, в начало страницы">Меседу<span class="wordmark-dot">.</span></a>
           <nav class="site-nav" aria-label="Основная навигация">
+            <a class="nav-primary" href="#work">Работы</a>
             <a href="#help">Услуги</a>
             <a href="#about">Обо мне</a>
-            <a href="#work">Работы</a>
-            <a href="#contact">Связаться</a>
+            <a class="nav-primary" href="#contact">Связаться</a>
           </nav>
         </header>
       </div>
@@ -342,29 +346,52 @@ h1, h2, h3 { font-family: "PT Serif", Georgia, serif; font-weight: 400; line-hei
           <div class="hero-content">
             <p class="eyebrow"><span class="eyebrow-line"></span> Меседу · сайты с вниманием к гостю</p>
             <h1 id="hero-title">Сайты и QR-меню для кафе, ресторанов и кондитерских</h1>
-            <p class="hero-question">Гости снова спрашивают о меню, цене и заказе?</p>
-            <p class="hero-copy">Я Меседу. Собираю сайты, где человек может сам посмотреть блюда, условия и оставить заявку. Сначала выясняю, что гости спрашивают чаще всего, и только потом предлагаю подходящий формат.</p>
+            <p class="hero-copy">Понятные страницы, где гостю легко найти меню, цены и условия заказа.</p>
             <div class="hero-actions">
-              <a class="button button-primary" href="#work">Посмотреть работы</a>
-              <a class="button button-outline" href="#contact">Обсудить задачу</a>
+              <a class="button button-primary" href="#work">Посмотреть работы ↓</a>
             </div>
           </div>
-          <a class="browser-preview" href="https://poster-menu-mesedu.mesedusajpudinova001.chatgpt.site" target="_blank" rel="noopener noreferrer" aria-label="Открыть демо QR-меню POSTER в новой вкладке">
-            <span class="browser-toolbar" aria-hidden="true">
-              <span class="browser-dots"><i></i><i></i><i></i></span>
-              <span class="browser-address">poster-menu-mesedu…chatgpt.site</span>
-            </span>
-            <img src="assets/poster-preview.jpeg" alt="Первый экран демо-сайта POSTER: меню, блюдо и кнопка бронирования" />
-            <span class="browser-footer"><strong>POSTER · демо QR-меню</strong><span>Открыть сайт ↗</span></span>
-          </a>
         </section>
         </div>
       </div>
       <div class="content-band">
       <div class="page-shell">
-        <section class="section-block" id="help" aria-labelledby="help-title">
+        <section class="section-block work-section" id="work" aria-labelledby="work-title">
           <div class="section-heading milk-panel">
-            <p class="eyebrow">01 / Чем помогу</p>
+            <p class="eyebrow">01 / Работы</p>
+            <h2 id="work-title">Сначала — реальные примеры</h2>
+            <p>Действующее QR-меню, демонстрационный сайт и пример оформления фото.</p>
+          </div>
+          <div class="portfolio-grid" id="portfolio">
+            <article class="portfolio-card milk-panel site-project featured-project">
+              <div class="portfolio-top"><span class="card-number">01</span><span class="portfolio-category">Реальный проект · QR-меню</span></div>
+              <div class="poster-preview"><img class="poster-image zadu-image" src="assets/zadu-preview.webp" width="653" height="900" alt="Интерьер кофейни ZÁDU — обложка действующего сайта и QR-меню" fetchpriority="high" /></div>
+              <h3>ZÁDU</h3>
+              <p class="portfolio-description">Действующий сайт и QR-меню для кофейни: завтраки и бар, карточки блюд, цены, информация о заведении и переход к отзыву.</p>
+              <a class="text-link" href="https://mesedusajpudinova001-tech.github.io/mesedu.portfolio/zadu/" target="_blank" rel="noopener noreferrer" aria-label="Открыть действующее QR-меню ZÁDU в новой вкладке">Открыть сайт ↗</a>
+            </article>
+            <article class="portfolio-card milk-panel site-project">
+              <div class="portfolio-top"><span class="card-number">02</span><span class="portfolio-category">Демо · QR-меню</span></div>
+              <div class="poster-preview"><img class="poster-image" src="assets/poster-preview.jpeg" width="1200" height="750" alt="Первый экран демонстрационного QR-меню POSTER" loading="lazy" /></div>
+              <h3>POSTER</h3>
+              <p class="portfolio-description">Демо-проект: меню с фото и ценами, заявка на вынос и бронирование столика.</p>
+              <a class="text-link" href="https://poster-menu-mesedu.mesedusajpudinova001.chatgpt.site" target="_blank" rel="noopener noreferrer" aria-label="Открыть демо QR-меню POSTER в новой вкладке">Открыть демо ↗</a>
+            </article>
+            <article class="portfolio-card milk-panel">
+              <div class="portfolio-top"><span class="card-number">03</span><span class="portfolio-category">Фото · десерт</span></div>
+              <div class="comparison-pair">
+                <div class="comparison-slot"><a class="photo-link" href="assets/cake-before.png" target="_blank" rel="noopener noreferrer" aria-label="До: открыть исходное фото торта в полном размере"><img src="assets/cake-before.webp" width="891" height="900" alt="Исходное фото торта" loading="lazy" /></a><span class="slot-label">До</span></div>
+                <div class="comparison-slot"><a class="photo-link" href="assets/cake-after.png" target="_blank" rel="noopener noreferrer" aria-label="После: открыть оформленное фото торта в полном размере"><img src="assets/cake-after.webp" width="532" height="900" alt="Фото торта после оформления" loading="lazy" /></a><span class="slot-label">После</span></div>
+              </div>
+              <h3>Торт: до и после</h3>
+              <p class="portfolio-description">Исходное фото десерта и вариант с новым фоном, светом и подачей.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block services-section" id="help" aria-labelledby="help-title">
+          <div class="section-heading milk-panel">
+            <p class="eyebrow">02 / Чем помогу</p>
             <h2 id="help-title">Что можно упростить<br />для ваших клиентов</h2>
             <p>Для заведения это меню и заказ, для специалиста — описание услуг и запись. Начнём с того, что сейчас приходится объяснять клиентам вручную.</p>
           </div>
@@ -392,39 +419,13 @@ h1, h2, h3 { font-family: "PT Serif", Georgia, serif; font-weight: 400; line-hei
 
         <section class="about-section" id="about" aria-labelledby="about-title">
           <div class="about-heading">
-            <p class="eyebrow">02 / Обо мне</p>
+            <p class="eyebrow">03 / Обо мне</p>
             <h2 id="about-title">Я Меседу. Сначала смотрю глазами вашего клиента.</h2>
           </div>
           <div class="about-text">
             <p>Опыт работы с покупателями в магазине научил меня сначала выяснять, что человеку нужно, объяснять варианты и честно говорить, когда выбор ему не подходит. Тот же принцип я переношу в сайты.</p>
             <p>Сайт собираю с помощью ИИ-инструментов — это часто называют вайб-кодингом. Сама продумываю, как человек найдёт цену, увидит условия и оставит заявку, а затем проверяю этот путь на телефоне.</p>
             <p>Если вашу задачу можно решить проще, скажу об этом до начала работы.</p>
-          </div>
-        </section>
-
-        <section class="section-block work-section" id="work" aria-labelledby="work-title">
-          <div class="section-heading milk-panel">
-            <p class="eyebrow">03 / Работы</p>
-            <h2 id="work-title">Посмотрите на примерах</h2>
-            <p>Откройте моё демо QR-меню и сравните исходное фото десерта с новым оформлением.</p>
-          </div>
-          <div class="portfolio-grid" id="portfolio">
-            <article class="portfolio-card milk-panel site-project">
-              <div class="portfolio-top"><span class="card-number">01</span><span class="portfolio-category">Демо · QR-меню</span></div>
-              <div class="poster-preview"><img class="poster-image" src="assets/poster-preview.jpeg" alt="Первый экран демо QR-меню POSTER" loading="lazy" /></div>
-              <h3>POSTER</h3>
-              <p class="portfolio-description">Мой демо-проект: меню с фото и ценами, заявка на вынос и бронирование столика. Это пример решения, а не сайт, запущенный для кофейни.</p>
-              <a class="text-link" href="https://poster-menu-mesedu.mesedusajpudinova001.chatgpt.site" target="_blank" rel="noopener noreferrer" aria-label="Открыть демо QR-меню POSTER в новой вкладке">Открыть демо ↗</a>
-            </article>
-            <article class="portfolio-card milk-panel">
-              <div class="portfolio-top"><span class="card-number">02</span><span class="portfolio-category">Фото · десерт</span></div>
-              <div class="comparison-pair">
-                <div class="comparison-slot"><a class="photo-link" href="assets/cake-before.png" target="_blank" rel="noopener noreferrer" aria-label="До: открыть фото торта в полном размере"><img src="assets/cake-before.png" alt="До: Торт: до и после" loading="lazy" /></a><span class="slot-label">До</span></div>
-                <div class="comparison-slot"><a class="photo-link" href="assets/cake-after.png" target="_blank" rel="noopener noreferrer" aria-label="После: открыть фото торта в полном размере"><img src="assets/cake-after.png" alt="После: Торт: до и после" loading="lazy" /></a><span class="slot-label">После</span></div>
-              </div>
-              <h3>Торт: до и после</h3>
-              <p class="portfolio-description">Исходное фото десерта и вариант с новым фоном: светлый стол у окна, море и мягкая штора.</p>
-            </article>
           </div>
         </section>
 
